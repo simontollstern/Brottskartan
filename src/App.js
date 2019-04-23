@@ -1,24 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Redirect, Switch} from "react-router-dom";
+
+import CrimeScreen from './Screens/CrimeScreen';
+import StationsScreen from './Screens/StationsScreen';
+import StatsScreen from './Screens/StatsScreen';
+import NoMatch from './Components/NoMatch/NoMatchComponent';
+
+// * App.js shows all the routes on the page
+
+// * Redirect the startpage / to /brott/
+const redirectStartPageToCrimes = () => {
+  return <Redirect from="/" to="/brott/" />
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={redirectStartPageToCrimes}/>
+          <Route path="/brott/" component={CrimeScreen} />
+          <Route path="/polisstationer/" component={StationsScreen} />
+          <Route path="/statistik/" component={StatsScreen} />
+          <Route component={NoMatch} />
+        </Switch>
+      </Router>
     </div>
   );
 }
