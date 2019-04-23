@@ -1,4 +1,4 @@
-import React, { Component, Link } from 'react'
+import React, { Component } from 'react'
 import NavbarComponent from '../Navbar/NavbarComponent'
 import SearchFuncComponent from '../Search/SearchFuncComponent'
 import style from './CardComponent.module.css'
