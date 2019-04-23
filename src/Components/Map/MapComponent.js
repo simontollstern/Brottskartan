@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
-import style from './MapComponent.module.css'
+import { Map, GoogleApiWrapper } from 'google-maps-react';
+// import style from './MapComponent.module.css'
 
-class MapComponent extends Component {
+export class MapComponent extends Component {
   render() {
     return (
-      <div>
-        
-      </div>
+      <Map google={this.props.google} zoom={5.5} initialCenter={{lat: 63.1983366,lng: 17.5671981}}>
+
+      </Map>
     )
   }
 }
 
-export default MapComponent;
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyBTDUngu6DGdd00qppeaMUj7RhYuUfFOBI',
+  language: 'sv-se'
+})(MapComponent)

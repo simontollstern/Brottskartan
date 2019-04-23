@@ -11,6 +11,7 @@ class CardComponent extends Component {
           <h1 className={style.header}>
             Brottskartan
           </h1>
+          <a className={style.link}>Om oss</a>
         </div>
         <NavbarComponent/>
         <SearchFuncComponent/>
