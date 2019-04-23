@@ -4,7 +4,7 @@ class CrimeScreen extends Component {
   render() {
     return (
       <div>
-        
+
       </div>
     )
   }

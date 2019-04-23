@@ -5,7 +5,7 @@ function SearchFuncComponent(props) {
 
     return (
       <div>
-        
+        Search
       </div>
     )
 
