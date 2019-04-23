@@ -1,0 +1,19 @@
+.navUl {
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+
+.navUl a {
+  text-decoration: none;
+  color: #777777;
+}
+
+.activeLink {
+  color: black!important;
+}
+
+.navLi {
+  font-size: 23px;
+  font-weight: 700;
+}
