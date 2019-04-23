@@ -26,6 +26,12 @@
   right: 5px;
   color: white;
   font-size: 14px;
+  background-color: #1862A8;
+  border: none;
+  outline: none;
+}
+.link:hover {
+  opacity: 0.8;
 }
 
 
