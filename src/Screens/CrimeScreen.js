@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import NavbarComponent from '../Components/Navbar/NavbarComponent';
 import MapComponent from '../Components/Map/MapComponent';
 import CardComponent from '../Components/Card/CardComponent';
 
@@ -9,7 +8,7 @@ class CrimeScreen extends Component {
     return (
       <div>
         <CardComponent></CardComponent>
-        {/* <MapComponent></MapComponent> */}
+        <MapComponent></MapComponent>
       </div>
     )
   }
