@@ -6,6 +6,7 @@ import CrimeScreen from './Screens/CrimeScreen';
 import StationsScreen from './Screens/StationsScreen';
 import StatsScreen from './Screens/StatsScreen';
 import NoMatch from './Components/NoMatch/NoMatchComponent';
+import FooterComponent from './Components/Footer/FooterComponent';
 
 // * App.js shows all the routes on the page
 
@@ -17,6 +18,9 @@ const redirectStartPageToCrimes = () => {
 function App() {
   return (
     <div className="App">
+
+      <FooterComponent />
+
       <Router>
         <Switch>
           <Route path="/" exact component={redirectStartPageToCrimes}/>
