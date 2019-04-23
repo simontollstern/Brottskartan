@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import NavBarComponent from '../Components/Navbar/NavbarComponent';
 import NavbarComponent from '../Components/Navbar/NavbarComponent';
+import MapComponent from '../Components/Map/MapComponent';
+import CardComponent from '../Components/Card/CardComponent';
+
 
 class CrimeScreen extends Component {
   render() {
     return (
       <div>
-        <NavbarComponent></NavbarComponent>
+        <CardComponent></CardComponent>
+        {/* <MapComponent></MapComponent> */}
       </div>
     )
   }
