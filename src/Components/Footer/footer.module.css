@@ -1,5 +1,6 @@
 * {
   font-weight: normal;
+  text-align: center;
 }
 
 .boxStyle {
@@ -16,11 +17,11 @@
 .latest {
   width: 150px;
   align-items: center;
-  font-weight: bold;
   line-height: 1.6em;
   color: white;
   background-color: #395060;
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 h5 {
