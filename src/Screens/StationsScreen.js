@@ -4,7 +4,7 @@ class StationsScreen extends Component {
   render() {
     return (
       <div>
-        
+
       </div>
     )
   }
