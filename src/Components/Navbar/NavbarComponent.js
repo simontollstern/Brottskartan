@@ -8,15 +8,15 @@ class NavbarComponent extends Component {
       <div>
         <ul className={style.navUl}>
           <NavLink to="/brott" activeClassName={style.activeLink}>
-          <li className={style.navLi}>Brott</li>
+            <li className={style.navLi}>Brott</li>
           </NavLink>
 
           <NavLink to="/polisstationer" activeClassName={style.activeLink}>
-          <li className={style.navLi}>Polisstationer</li>
+            <li className={style.navLi}>Polisstationer</li>
           </NavLink>
 
           <NavLink to="/statistik" activeClassName={style.activeLink}>
-          <li className={style.navLi}>Statistik</li>
+            <li className={style.navLi}>Statistik</li>
           </NavLink>
         </ul>
       </div>
