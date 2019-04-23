@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import MapComponent from '../Components/Map/MapComponent';
+import React, { Component } from 'react';
 import CardComponent from '../Components/Card/CardComponent';
-
+import MapComponent from '../Components/Map/MapComponent';
+import FooterComponent from '../Components/Footer/FooterComponent';
 
 class CrimeScreen extends Component {
   render() {
@@ -9,6 +9,7 @@ class CrimeScreen extends Component {
       <div>
         <CardComponent></CardComponent>
         <MapComponent></MapComponent>
+        <FooterComponent />
       </div>
     )
   }
