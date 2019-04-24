@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // This function takes a component...
-function witHttpRequests(WrappedComponent, selectData) {
+export default function witHttpRequests(WrappedComponent, selectData) {
   // ...and returns another component...
   return class extends Component {
 
@@ -8,6 +8,7 @@ function witHttpRequests(WrappedComponent, selectData) {
     getEvents = () => {
      return fetch('https://polisen.se/api/events');
     }
+
     //Get the police stations from the Swedish police api
     getStations = () => {
       return fetch('https://polisen.se/api/policestations');
@@ -24,7 +25,7 @@ function witHttpRequests(WrappedComponent, selectData) {
           getEvents={this.getEvents}
           getStations={this.getStations}
           {...this.props} 
-        />;
+        />
       ) 
     }
   };
