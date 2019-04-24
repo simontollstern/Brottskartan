@@ -6,8 +6,8 @@ export class MapComponent extends Component {
   render() {
     return (
       <Map google={this.props.google}
-           zoom={5}
-           initialCenter={{lat: 63.1983366,lng: 17.5671981}}
+           zoom={5.3}
+           initialCenter={{lat: 62.8,lng: 17.5671981}}
            mapTypeControl={false}
            fullscreenControl={false}
            streetViewControl={false}

@@ -1,3 +1,15 @@
+.wrapper {
+  margin-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid grey;
+}
+
+.infoP {
+  text-align: left;
+  margin-left: 60px;
+  /* margin-left: 51px; för att få den jämn med navLinks */
+}
+
 .navUl {
   display: flex;
   justify-content: space-evenly;
@@ -6,14 +18,16 @@
 
 .navUl a {
   text-decoration: none;
-  color: #777777;
+  color: black;
+  opacity: 0.4;
 }
 
 .activeLink {
   color: black!important;
+  opacity: 1!important;
 }
 
 .navLi {
-  font-size: 23px;
+  font-size: 18px;
   font-weight: 700;
 }
