@@ -3,6 +3,11 @@ import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 // import style from './MapComponent.module.css'
 
 export class MapComponent extends Component {
+
+  getCrimes = () => {
+    
+  }
+
   render() {
     return (
       <Map google={this.props.google}

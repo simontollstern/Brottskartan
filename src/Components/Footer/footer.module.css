@@ -1,6 +1,7 @@
 * {
   font-weight: normal;
   text-align: center;
+  outline: none;
 }
 
 .boxStyle {
@@ -20,13 +21,31 @@
   font-weight: 700;
   padding: 0.5px 30px;
   background-color: #395060;
+  text-align: center;
 } 
 
- h5 {
+h4 {
   text-align: center;
   color: white;
   text-transform: uppercase;
   padding: 0 15px;
+  font-size: 14px;
+}
+
+h5 {
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  padding: 0 15px;
+}
+
+h5:before {
+  content: "|";
+  padding-right: 25px;
+}
+
+.borderColor {
+  border: 1px solid red;
 }
 
  .news {
