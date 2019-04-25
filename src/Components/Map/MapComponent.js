@@ -20,6 +20,5 @@ export class MapComponent extends Component {
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyBTDUngu6DGdd00qppeaMUj7RhYuUfFOBI',
-  language: 'sv-se',
-  disableDefaultUI: true
+  language: 'sv-se'
 })(MapComponent)
