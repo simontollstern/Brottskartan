@@ -3,7 +3,6 @@ import MapComponent from '../Components/Map/MapComponent';
 
 class StationsScreen extends Component {
   componentDidMount() {
-    console.log('Policestations: ')
     this.getStations();
   }
 
