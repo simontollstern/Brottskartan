@@ -1,13 +1,12 @@
 import React from 'react'
 
 import style from './footer.module.css';
-import withHttpRequests from '../Hocs/withHttpRequests';
 import Slider from "react-slick";
+import { connect } from 'react-redux';
 
 // Show the latest crimes in the bottom of the page
 
-function FooterComponent() {
-
+function FooterComponent(props) {
   const settings = {
     autoplay: true,
     autoplaySpeed: 0,
@@ -19,22 +18,23 @@ function FooterComponent() {
     variableWidth: true
   };
 
+
   return (
     <div className={style.boxStyle}>
-      <h5 className={style.latest}>Senaste Nytt: </h5>
+      <h4 className={style.latest}>Senaste Nytt:</h4>
       <div className={style.news}>
         <Slider {...settings}>
-          <div><h5>24 april 06:55, Trafikolycka, singel, Katrineholm</h5></div>
-          <div><h5>24 april 06:55, Trafikolycka, singel, Katrineholm</h5></div>
-          <div><h5>24 april 06:55, Trafikolycka, singel, Katrineholm</h5></div>
-          <div><h5>24 april 06:55, Trafikolycka, singel, Katrineholm</h5></div>
-          <div><h5>24 april 06:55, Trafikolycka, singel, Katrineholm</h5></div>
-          <div><h5>24 april 06:55, Trafikolycka, singel, Katrineholm</h5></div>
-          <div><h5>24 april 06:55, Trafikolycka, singel, Katrineholm</h5></div>
+          {props.crimes.map((crime, i) => {
+            return i < 5 && <div key={i}><h5>{crime.name}</h5></div>
+          })}
         </Slider>
       </div>
     </div>
   )
 }
 
-export default withHttpRequests(FooterComponent);
+const mapStateToProps = (state) => ({
+  crimes: state.root.crimes
+});
+
+export default connect(mapStateToProps, null)(FooterComponent);
