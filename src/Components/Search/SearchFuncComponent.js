@@ -5,14 +5,14 @@ import { GoogleApiWrapper } from 'google-maps-react';
 
 function SearchFuncComponent(props) {
 
-  const input = document.getElementById('input');
-  const options = {
-    types: ['(cities)'],
-    componentRestrictions: {country: 'sv'}
-  }
+  // const input = document.getElementById('input');
+  // const options = {
+  //   types: ['(cities)'],
+  //   componentRestrictions: {country: 'sv'}
+  // }
 
-  const google = this.props.google;
-  const autocomplete = new google.maps.places.Autocomplete(input, options);
+  // const google = this.props.google;
+  // const autocomplete = new google.maps.places.Autocomplete(input, options);
 
     return (
       <div>
