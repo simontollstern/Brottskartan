@@ -6,7 +6,7 @@ export default class DropdownComponent extends Component {
     return (
       <div className={style.dropdownWrapper}>
         <select className={style.dropdown}>
-          <option value="volvo">Välj typ av brott</option>
+          <option value="Brott">Välj typ av brott</option>
         </select>
       </div>
     )
