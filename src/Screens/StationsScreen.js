@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import MapComponent from '../Components/Map/MapComponent';
+import React, { Component } from 'react';
+import Gmaps from '../Components/gmapstest/GmapsComponent';
 
 class StationsScreen extends Component {
   componentDidMount() {
@@ -16,7 +16,7 @@ class StationsScreen extends Component {
   render() {
     return (
       <div>
-        <MapComponent></MapComponent>
+        <Gmaps/>
       </div>
     )
   }
