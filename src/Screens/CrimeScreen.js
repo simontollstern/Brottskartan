@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 class CrimeScreen extends Component {
   //Get the crime events from the Swedish police api
   componentDidMount() {
-    console.log('crimes');
     fetch('https://polisen.se/api/events')
         .then(response => response.json())
         .then(data => this.props.getCrimes(data));
