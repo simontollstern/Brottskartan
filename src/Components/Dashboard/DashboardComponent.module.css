@@ -23,6 +23,7 @@
   color: white;
   font-size: 22px;
   font-weight: 700;
+  position: relative;
 }
 
 .link {
@@ -37,6 +38,19 @@
 }
 .link:hover {
   opacity: 0.8;
+}
+
+.aboutUs {
+  width: 200px;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  left: 102%;
+  top: 0;
+  z-index: 3422343;
+
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.50);
 }
 
 

@@ -5,12 +5,16 @@ import style from './DashboardComponent.module.css'
 import DropdownComponent from '../Dropdown/DropdownComponent';
 
 class DashboardComponent extends Component {
- 
   constructor(props) {
     super(props)
     this.state = {
-      showType: 'crime'
+      showType: 'crime',
+      toggleInfo: false
     }
+  }
+
+  toggleInfo = () => {
+    this.setState({ toggleInfo: !this.state.toggleInfo })
   }
 
   updateType = (type) => {
@@ -26,7 +30,15 @@ class DashboardComponent extends Component {
           <h1 className={style.header}>
             Brottskarta
           </h1>
-          <button className={style.link}>Om oss</button>
+          <button className={style.link} onClick={this.toggleInfo}>Om oss</button>
+
+          {
+          this.state.toggleInfo &&
+            <div className={style.aboutUs}>
+              <p>sdaa soidjioas iodasiod asoidj asjdo asodaso doasdo iasodi asjdao  asoinsda ads oinads oin</p>
+            </div>
+          }
+
         </div>
         <NavbarComponent
         updateType={this.updateType}
