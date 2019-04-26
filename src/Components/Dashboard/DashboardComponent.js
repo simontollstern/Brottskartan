@@ -35,7 +35,7 @@ class DashboardComponent extends Component {
           {
           this.state.toggleInfo &&
             <div className={style.aboutUs}>
-              <p>sdaa soidjioas iodasiod asoidj asjdo asodaso doasdo iasodi asjdao  asoinsda ads oinads oin</p>
+              <p>Dolor sint ullamco anim minim incididunt ut velit excepteur non consectetur labore duis ea proident. Cupidatat aliquip ullamco aute aute et dolor eiusmod anim. Eiusmod anim elit sunt culpa. Dolore amet consequat exercitation anim excepteur tempor. Nostrud exercitation quis sit eu amet.</p>
             </div>
           }
 
