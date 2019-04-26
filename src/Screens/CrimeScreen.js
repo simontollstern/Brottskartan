@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import MapComponent from '../Components/Map/MapComponent';
 import Gmaps from '../Components/gmapstest/GmapsComponent';
 import { getCrimes } from '../Redux/actions';
 import { connect } from 'react-redux';
@@ -35,7 +34,6 @@ class CrimeScreen extends Component {
         <Gmaps>
           
         </Gmaps>
-        {/* <MapComponent></MapComponent> */}
       </div>
     )
   }
