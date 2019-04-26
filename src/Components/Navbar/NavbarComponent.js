@@ -14,6 +14,7 @@ class NavbarComponent extends Component {
     super(props)
     this.state = {
       infoText: this.infoTextObject.crime
+      //bug when refreshing ask robin
     }
   }
 

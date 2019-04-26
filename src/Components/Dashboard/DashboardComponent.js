@@ -43,7 +43,8 @@ class DashboardComponent extends Component {
         <NavbarComponent
         updateType={this.updateType}
         />
-        <SearchFuncComponent/>
+        <SearchFuncComponent />
+        
         {this.state.showType === 'crime' &&
           <DropdownComponent/>
         }
