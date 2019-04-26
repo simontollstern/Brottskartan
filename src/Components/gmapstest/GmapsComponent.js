@@ -24,7 +24,6 @@ class GmapsComponent extends Component {
   };
 
   renderMarkers = (map) => {
-    console.log(map)
     for(let crime of this.props.crimes){
       // if crime type ISNT (!trafik) then do this (???)
       let marker = new window.google.maps.Marker({
