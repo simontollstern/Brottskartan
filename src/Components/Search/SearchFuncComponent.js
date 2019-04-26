@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './SearchFuncComponent.module.css'
+// import style from './SearchFuncComponent.module.css'
 
 function SearchFuncComponent(props) {
 
