@@ -52,11 +52,14 @@ class GmapsComponent extends Component {
       let infoText = `<h3 style="color: black; opacity: 0.5;">${crime.name}</h3><br></br><h2>${crime.summary}</h2>`;
       //where we create infoWindow with settings.
       let infoWindow = new window.google.maps.InfoWindow({
-        content: infoBox
+        content: infoText
       });
 
       marker.addListener('click', function() {
         infoWindow.open(map, marker);
+      })
+      this.map.addListener('click', function() {
+        infoWindow.close(map, marker)
       })
     }
   }
