@@ -3,8 +3,7 @@ export const getCrimes = (crime) => ({
   payload: crime
 });
 
-// export const getCrimes = (crimes) => ({
-//   type: 'GET_CRIMES',
-//   payload: crimes
-// });
-
+export const setType = (type) => ({
+  type: 'SET_TYPE',
+  payload: type
+});
