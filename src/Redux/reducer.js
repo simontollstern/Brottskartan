@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 
 const initialState = {
   crimes: [],
+  stations: [],
   selectedType: 'Alla'
 }
 
@@ -12,8 +13,12 @@ const root = (state = initialState, action) => {
         ...state,
         crimes: [...state.crimes, ...action.payload]
       }
-    case 'SET_TYPE':
-      console.log(action.payload)
+      case 'GET_STATIONS': 
+      return {
+        ...state,
+        stations: [...state.stations, ...action.payload]
+      }
+      case 'SET_TYPE':
       return {
         ...state,
         selectedType: action.payload
@@ -22,6 +27,7 @@ const root = (state = initialState, action) => {
       return state;
   }
 }
+
 
 export default combineReducers({
   root

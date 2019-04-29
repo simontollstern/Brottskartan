@@ -1,0 +1,19 @@
+.ulStyle {
+  font-size: 18px;
+  margin-left: 50%;
+  transform: translateX(-50%)
+}
+
+.ulStyle li {
+  text-align: left;
+  list-style-type: disc;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.flextest {
+  display: flex;
+  justify-content: center;
+}
