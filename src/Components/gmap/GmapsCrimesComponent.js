@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-// import style from './GmapsComponent.module.css';
 import { connect } from 'react-redux';
 
-class GmapsComponent extends Component {
+class GmapsCrimesComponent extends Component {
 
   map;
   markers = [];
@@ -91,4 +90,4 @@ const mapStateToProps = (state) => ({
   selectedType: state.root.selectedType
 });
 
-export default connect(mapStateToProps, null)(GmapsComponent);
+export default connect(mapStateToProps, null)(GmapsCrimesComponent);
