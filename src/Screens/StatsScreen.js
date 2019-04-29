@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Gmaps from '../Components/gmapstest/GmapsComponent';
+import Gmaps from '../Components/gmap/GmapsCrimesComponent';
 
 class StatsScreen extends Component {
   render() {
