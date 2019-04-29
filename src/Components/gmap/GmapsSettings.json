@@ -1,0 +1,107 @@
+  [
+    {
+      "featureType": "administrative.country",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "administrative.country",
+      "elementType": "labels.text",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "administrative.locality",
+      "elementType": "labels.text",
+      "stylers": [
+        {
+          "visibility": "simplified"
+        }
+      ]
+    },
+    {
+      "featureType": "administrative.neighborhood",
+      "elementType": "labels.text",
+      "stylers": [
+        {
+          "visibility": "simplified"
+        }
+      ]
+    },
+    {
+      "featureType": "administrative.province",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "administrative.province",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "administrative.province",
+      "elementType": "labels.text",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "poi",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "poi",
+      "elementType": "labels.text",
+      "stylers": [
+        {
+          "visibility": "on"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.medical",
+      "stylers": [
+        {
+          "visibility": "on"
+        }
+      ]
+    },
+    {
+      "fetureType": "poi.attraction",
+      "stylers" : [
+        {
+          "visibility": "on"
+        }
+      ]
+    },
+    {
+      "featureType": "water",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "visibility": "on"
+        }
+      ]
+    }
+  ]
