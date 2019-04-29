@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Gmaps from '../Components/gmapstest/GmapsComponent';
+import CrimeMap from '../Components/gmap/GmapsCrimesComponent';
 import { getCrimes } from '../Redux/actions';
 import { connect } from 'react-redux';
 
@@ -21,19 +21,12 @@ class CrimeScreen extends Component {
     }, 350000);
   }
 
-  // Get all the crimes from the polices API
-  // getCrimes = () => {
-  //   fetch('https://polisen.se/api/events')
-  //   .then(response => response.json())
-  //   .then(data => console.log(data))
-  // }
+
 
   render() {
     return (
       <div>
-        <Gmaps>
-          
-        </Gmaps>
+        <CrimeMap/>
       </div>
     )
   }

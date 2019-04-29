@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-// import style from './GmapsComponent.module.css';
 import { connect } from 'react-redux';
 import gmapsSettings from './GmapsSettings.json';
 
-class GmapsComponent extends Component {
+class GmapsCrimesComponent extends Component {
 
   map;
   markers = [];
@@ -65,7 +64,13 @@ class GmapsComponent extends Component {
           content: infoBox
         });
 
-        marker.addListener('click', function() {
+        marker.infoWindow = infoWindow;
+        let markers = this.markers;
+
+        marker.addListener('click', function(){
+          for(let m of markers){
+            m.infoWindow.close();
+          }
           infoWindow.open(map, marker);
         })
       }
@@ -85,4 +90,4 @@ const mapStateToProps = (state) => ({
   selectedType: state.root.selectedType
 });
 
-export default connect(mapStateToProps, null)(GmapsComponent);
+export default connect(mapStateToProps, null)(GmapsCrimesComponent);
