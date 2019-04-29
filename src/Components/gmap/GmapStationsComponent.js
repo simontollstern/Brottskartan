@@ -5,6 +5,7 @@ import style from './GmapStationsComponent.module.css';
 
 class GmapStationsComponent extends Component {
   map;
+  markers = [];
 
   componentDidMount(){
     this.map = new window.google.maps.Map(document.getElementById('map'),{
@@ -24,13 +25,15 @@ class GmapStationsComponent extends Component {
         map: map
       });
 
+      this.markers.push(marker);
+
       let services = "";
 
       for(let service of station.services) {
         services += '<li>' + service.name + '</li>';
       }
 
-       let infoText = 
+       let infoText =
         `<div class="flextest">
           <h2>
             Polisstation:&nbsp;<h2 class="bold">${station.name}</h2>
@@ -59,7 +62,7 @@ class GmapStationsComponent extends Component {
 
         <br>
 
-        Mer information om Polisstationen i ${station.name}: 
+        Mer information om Polisstationen i ${station.name}:
         <a href="${station.Url}" target='_blank'>
         Klicka här
         </a>`;
@@ -68,7 +71,13 @@ class GmapStationsComponent extends Component {
         content: infoText
       });
 
-      marker.addListener('click', function() {
+      marker.infoWindow = infoWindow;
+      let markers = this.markers;
+
+      marker.addListener('click', function(){
+        for(let m of markers){
+          m.infoWindow.close();
+        }
         infoWindow.open(map, marker);
       })
     }
