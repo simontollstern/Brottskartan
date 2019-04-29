@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import style from './GmapsComponent.module.css';
 import { connect } from 'react-redux';
+import gmapsSettings from './GmapsSettings.json';
 
 class GmapsComponent extends Component {
 
@@ -10,7 +11,8 @@ class GmapsComponent extends Component {
   componentDidMount () {
     this.map = new window.google.maps.Map(document.getElementById('map'), {
       center: { lat: 62.8, lng: 17.5671981 },
-      zoom: 5.3
+      zoom: 5.3,
+      styles: gmapsSettings
     });
     this.renderMarkers(this.map, this.props.selectedType);
   }
@@ -67,8 +69,6 @@ class GmapsComponent extends Component {
           infoWindow.open(map, marker);
         })
       }
-
-
     }
   }
 
