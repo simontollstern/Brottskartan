@@ -3,8 +3,8 @@ export const getCrimes = (crime) => ({
   payload: crime
 });
 
-// export const getCrimes = (crimes) => ({
-//   type: 'GET_CRIMES',
-//   payload: crimes
-// });
+export const getStations = (station) => ({
+  type: 'GET_STATIONS',
+  payload: station
+});
 

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-// import style from './GmapsComponent.module.css';
 import { connect } from 'react-redux';
 
-class GmapsComponent extends Component {
+class GmapsCrimesComponent extends Component {
 
   map;
 
@@ -31,28 +30,13 @@ class GmapsComponent extends Component {
         map: map
       });
 
-      //test to get the date.
-      let infoDate = crime.name.split(',')[0]
-      let infoType = crime.name.split(',')[1]
-      let infoLocation = crime.name.split(',')[2]
-      let infoLocationTwo = crime.name.split(',')[3]
-
-
-
-      //the html we send to the content option of InfoWindow()
-      let infoBox = `
-        <h3 style="color: black; opacity: 0.7;">${infoDate}</h3>
-        <br>
-        <p>${infoType}</p>
-        <br>
-        <p>${infoLocation}</p>
-        <br>
-        <p>${infoLocationTwo}</p>
-      `
-      let infoText = `<h3 style="color: black; opacity: 0.5;">${crime.name}</h3><br></br><h2>${crime.summary}</h2>`;
+      let infoText = `<h3 style="color: black; opacity: 0.5;">
+                        ${crime.name}</h3>
+                        <br></br>
+                        <h2>${crime.summary}</h2>`;
       //where we create infoWindow with settings.
       let infoWindow = new window.google.maps.InfoWindow({
-        content: infoBox
+        content: infoText
       });
 
       marker.addListener('click', function() {
@@ -73,4 +57,4 @@ const mapStateToProps = (state) => ({
   crimes: state.root.crimes
 });
 
-export default connect(mapStateToProps, null)(GmapsComponent);
+export default connect(mapStateToProps, null)(GmapsCrimesComponent);

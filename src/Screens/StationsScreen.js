@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
-import MapComponent from '../Components/Map/MapComponent';
+import React, { Component } from 'react';
+import StationMap from '../Components/gmap/GmapStationsComponent';
+import { getStations } from '../Redux/actions';
+import { connect } from 'react-redux'
 
 class StationsScreen extends Component {
+
   componentDidMount() {
     this.getStations();
   }
@@ -10,16 +13,21 @@ class StationsScreen extends Component {
    getStations = () => {
     fetch('https://polisen.se/api/policestations')
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => this.props.getStations(data))
   }
 
   render() {
     return (
       <div>
-        <MapComponent></MapComponent>
+        <StationMap/>
       </div>
     )
   }
 }
 
-export default StationsScreen;
+const mapDispatchToProps = (dispatch) => ({
+  getStations: (stations) => dispatch(getStations(stations))
+})
+
+export default connect(null, mapDispatchToProps)(StationsScreen);
+
