@@ -13,8 +13,17 @@ class DropdownComponent extends Component {
 
     let crimeTypes = [];
     for(let crime of this.props.crimes){
-      if(!crimeTypes.includes(crime.type)){
-        crimeTypes.push(crime.type);
+      if(!crimeTypes.some(e => e.name === crime.type)) {
+        crimeTypes.push({
+          name: crime.type,
+          count: 1
+        })
+      } else {
+        for(let type of crimeTypes) {
+          if(type.name === crime.type) {
+            type.count++;
+          }
+        }
       }
     }
     crimeTypes.sort();
@@ -24,7 +33,7 @@ class DropdownComponent extends Component {
         <select className={style.dropdown} onChange={this.changeSelectedType}>
           <option value="Alla">Alla brottstyper</option>
           {crimeTypes.map((type, i) => {
-            return <option key={i} value={type}>{type}</option>
+            return <option key={i} value={type.name}>{type.name} ({type.count})</option>
           })}
         </select>
       </div>

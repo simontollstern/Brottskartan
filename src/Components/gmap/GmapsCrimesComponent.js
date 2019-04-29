@@ -30,8 +30,6 @@ class GmapsCrimesComponent extends Component {
       marker.setMap(null);
     }
     for(let crime of this.props.crimes){
-      // if crime type ISNT (!trafik) then do this (???)
-
       if(crime.type === this.props.selectedType || this.props.selectedType === 'Alla'){
         let marker = new window.google.maps.Marker({
           position: { lat: Number(crime.location.gps.split(',')[0]), lng: Number(crime.location.gps.split(',')[1]) },
@@ -40,28 +38,9 @@ class GmapsCrimesComponent extends Component {
 
         this.markers.push(marker);
 
-        //test to get the date.
-        let infoDate = crime.name.split(',')[0]
-        let infoType = crime.name.split(',')[1]
-        let infoLocation = crime.name.split(',')[2]
-        let infoLocationTwo = crime.name.split(',')[3]
-
-
-
-        //the html we send to the content option of InfoWindow()
-        let infoBox = `
-          <h3 style="color: black; opacity: 0.7;">${infoDate}</h3>
-          <br>
-          <p>${infoType}</p>
-          <br>
-          <p>${infoLocation}</p>
-          <br>
-          <p>${infoLocationTwo}</p>
-        `
-        let infoText = `<h3 style="color: black; opacity: 0.5;">${crime.name}</h3><br></br><h2>${crime.summary}</h2>`;
-        //where we create infoWindow with settings.
+        let infoText = `<h3>${crime.name}</h3><br><h2>${crime.summary}</h2>`;
         let infoWindow = new window.google.maps.InfoWindow({
-          content: infoBox
+          content: infoText
         });
 
         marker.infoWindow = infoWindow;
