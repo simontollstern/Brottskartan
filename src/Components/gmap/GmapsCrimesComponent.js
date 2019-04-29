@@ -38,7 +38,7 @@ class GmapsCrimesComponent extends Component {
 
         this.markers.push(marker);
 
-        let infoText = `<h3>${crime.name}</h3><br><h2>${crime.summary}</h2>`;
+        let infoText = `<h2>${crime.summary}</h2><br><h3>${crime.name}</h3><br><p style="font-size: 20px;">Läs mer om detta brott <a style="text-decoration: none;"href="${crime.url}">här</a></p>`;
         let infoWindow = new window.google.maps.InfoWindow({
           content: infoText
         });
