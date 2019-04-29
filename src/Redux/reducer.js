@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 const initialState = {
   crimes: [],
-  stations: []
+  stations: [],
   selectedType: 'Alla'
 }
 
