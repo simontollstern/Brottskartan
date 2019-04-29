@@ -8,3 +8,7 @@ export const getStations = (station) => ({
   payload: station
 });
 
+export const setType = (type) => ({
+  type: 'SET_TYPE',
+  payload: type
+});
