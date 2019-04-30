@@ -5,20 +5,27 @@ import { connect } from 'react-redux';
 
 class DropdownComponent extends Component {
 
+  // Sends the selected value to the Redux store
   changeSelectedType = () => {
     this.props.setType(document.querySelector('select').value);
   }
 
   render() {
 
+    // Define an empty array
     let crimeTypes = [];
+
+    // Loop through the data from the API
     for(let crime of this.props.crimes){
+      // If the array created above doesn't contain the type of the current crime
       if(!crimeTypes.some(e => e.name === crime.type)) {
+        // Push the crime to the array
         crimeTypes.push({
           name: crime.type,
           count: 1
         })
       } else {
+        // If it already exists - add 1 to its crime count
         for(let type of crimeTypes) {
           if(type.name === crime.type) {
             type.count++;
@@ -26,6 +33,8 @@ class DropdownComponent extends Component {
         }
       }
     }
+
+    // Sort the array alphebetically
     crimeTypes.sort();
 
     return (
