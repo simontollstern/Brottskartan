@@ -8,6 +8,8 @@ class GmapsCrimesComponent extends Component {
   // Defining variables (use this. to access them)
   map;
   markers = [];
+  mapMarkers = [];
+  infoText = "";
 
   componentDidMount () {
     // Create the map and assign some settings
@@ -34,9 +36,12 @@ class GmapsCrimesComponent extends Component {
   // Big function - feel free to split into smaller ones
   renderMarkers = (map, type) => {
     // Loop through all markers and remove them from the map
-    for(let marker of this.markers){
+    for(let marker of this.mapMarkers){
       marker.setMap(null);
     }
+
+    this.markers = [];
+    this.mapMarkers = [];
 
     // Loop through crimes aquired from the API..
     for(let crime of this.props.crimes){
@@ -68,10 +73,10 @@ class GmapsCrimesComponent extends Component {
     // Loop through the newly created array of markers
     for(let marker of this.markers){
 
-        let infoText = `<h2>${crime.summary}</h2><br><h3>${crime.name}</h3><br><p style="font-size: 20px;">Läs mer om detta brott <a style="text-decoration: none;"href="${crime.url}">här</a></p>`;
-        let infoWindow = new window.google.maps.InfoWindow({
-          content: infoText
-        });
+        // let infoText = `<h2>${crime.summary}</h2><br><h3>${crime.name}</h3><br><p style="font-size: 20px;">Läs mer om detta brott <a style="text-decoration: none;"href="${crime.url}">här</a></p>`;
+        // let infoWindow = new window.google.maps.InfoWindow({
+        //   content: infoText
+        // });
 
 
       // _________________________________________________
@@ -84,38 +89,53 @@ class GmapsCrimesComponent extends Component {
       // Feel free to modify anything to make it work :)
       // __________________________________________________
 
-      //if(marker.crimes.type === this.props.selectedType || this.props.selectedType === 'Alla'){
-
-          new window.google.maps.Marker({
-            position: { lat: marker.location.lat, lng: marker.location.lng },
-            map: map,
-            label: {
-              text: marker.crimes.length.toString(),
-              color: 'white',
-              fontWeight: 'bold'
-            }
-          });
-
-          let infoText = "";
-
-          for(let crime of marker.crimes){
-            infoText += `<h3>${crime.name}</h3><br><h2>${crime.summary}</h2><br>`
+      if (this.props.selectedType === 'Alla') {
+        this.mapMarkers.push(new window.google.maps.Marker({
+          position: { lat: marker.location.lat, lng: marker.location.lng },
+          map: map,
+          label: {
+            text: marker.crimes.length.toString(),
+            color: 'white',
+            fontWeight: 'bold'
           }
+        }));
+     
 
-        marker.infoWindow = new window.google.maps.InfoWindow({
-          content: infoText
-        });
+          
+          // for(let crime of marker.crimes){
+          //   infoText += `<h3>${crime.name}</h3><br><h2>${crime.summary}</h2><br>`
+          // }
 
-        // let markers = this.markers;
-        //
-        // marker.addListener('click', function(){
-        //   for(let m of markers){
-        //     m.infoWindow.close();
-        //   }
-        //   infoWindow.open(map, marker);
-        // })
+
+      } else if (marker.crimes.some(e => e.type === this.props.selectedType)){
+        this.mapMarkers.push(new window.google.maps.Marker({
+          position: { lat: marker.location.lat, lng: marker.location.lng },
+          map: map,
+          label: {
+            text: marker.crimes.filter(marker => {
+             return marker.type === this.props.selectedType
+            }).length.toString(),
+            color: 'white',
+            fontWeight: 'bold'
+          }
+        }));
       }
     }
+    // for(let marker of this.mapMarkers){
+    //   marker.infoWindow = new window.google.maps.InfoWindow({
+    //     content: infoText
+    //   });
+
+    //   let markers = this.markers;
+      
+    //   marker.addListener('click', function(){
+    //     for(let m of markers){
+    //       m.infoWindow.close();
+    //     }
+    //     infoWindow.open(map, marker);
+    //   })
+    // }
+  }
 
   render() {
 
