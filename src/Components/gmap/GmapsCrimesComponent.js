@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import gmapsSettings from './GmapsSettings.json';
+// import { MarkerClusterer } from './MarkerCluster/MarkerClusterer.js';
 
 class GmapsCrimesComponent extends Component {
 
   map;
   markers = [];
+  markerCluster;
 
   componentDidMount () {
     this.map = new window.google.maps.Map(document.getElementById('map'), {
@@ -47,6 +49,7 @@ class GmapsCrimesComponent extends Component {
 
         marker.infoWindow = infoWindow;
         let markers = this.markers;
+        
 
         marker.addListener('click', function(){
           for(let m of markers){
@@ -56,7 +59,9 @@ class GmapsCrimesComponent extends Component {
         })
       }
     }
+    let markerCluster = new window.MarkerClusterer(map, this.markers, {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
   }
+
 
   render() {
 
