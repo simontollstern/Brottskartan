@@ -11,7 +11,9 @@ class GmapsCrimesComponent extends Component {
     this.map = new window.google.maps.Map(document.getElementById('map'), {
       center: { lat: 62.8, lng: 17.5671981 },
       zoom: 5.3,
-      styles: gmapsSettings
+      styles: gmapsSettings,
+      disableDefaultUI: true,
+      zoomControl: true
     });
     this.renderMarkers(this.map, this.props.selectedType);
   }
@@ -38,7 +40,7 @@ class GmapsCrimesComponent extends Component {
 
         this.markers.push(marker);
 
-        let infoText = `<h2>${crime.summary}</h2><br><h3>${crime.name}</h3><br><p style="font-size: 20px;">Läs mer om detta brott <a style="text-decoration: none;"href="${crime.url}">här</a></p>`;
+        let infoText = `<h2>${crime.summary}</h2><br><h3>${crime.name}</h3><br><p style="font-size: 17px;">Läs mer om detta brott <a style="text-decoration: none;"href="${crime.url}">här</a></p>`;
         let infoWindow = new window.google.maps.InfoWindow({
           content: infoText
         });
