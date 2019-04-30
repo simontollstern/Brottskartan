@@ -64,8 +64,15 @@ class GmapsCrimesComponent extends Component {
 
     console.log(this.markers);
 
+
     // Loop through the newly created array of markers
     for(let marker of this.markers){
+
+        let infoText = `<h2>${crime.summary}</h2><br><h3>${crime.name}</h3><br><p style="font-size: 20px;">Läs mer om detta brott <a style="text-decoration: none;"href="${crime.url}">här</a></p>`;
+        let infoWindow = new window.google.maps.InfoWindow({
+          content: infoText
+        });
+
 
       // _________________________________________________
       // Here's where it gets a bit tricky:
