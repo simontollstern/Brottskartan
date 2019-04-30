@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../../googleMaps.css';
 import style from './GmapStationsComponent.module.css';
+import { setStationMap } from '../../Redux/actions';
 
 class GmapStationsComponent extends Component {
   map;
@@ -12,6 +13,7 @@ class GmapStationsComponent extends Component {
       center: { lat: 62.8, lng: 17.5671981 },
       zoom: 5.3
     });
+    this.props.setStationMap(this.map);
     this.renderMarkers(this.map);
   }
 
@@ -99,4 +101,8 @@ const mapStateToProps = (state) => ({
   stations: state.root.stations
 });
 
-export default connect(mapStateToProps, null)(GmapStationsComponent);
+const mapDispatchToProps = (dispatch) => ({
+  setStationMap: (map) => dispatch(setStationMap(map))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(GmapStationsComponent);
