@@ -18,7 +18,7 @@ class CrimeScreen extends Component {
     //timer that call a function to get new data from the Polis-api
     setInterval(() => {
       this.getData();
-    }, 350000);
+    }, 300000);
   }
 
 
