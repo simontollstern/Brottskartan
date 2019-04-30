@@ -8,6 +8,7 @@ class GmapsCrimesComponent extends Component {
   // Defining variables (use this. to access them)
   map;
   markers = [];
+  markerCluster;
   mapMarkers = [];
   infoText = "";
 
@@ -16,7 +17,9 @@ class GmapsCrimesComponent extends Component {
     this.map = new window.google.maps.Map(document.getElementById('map'), {
       center: { lat: 62.8, lng: 17.5671981 },
       zoom: 5.3,
-      styles: gmapsSettings
+      styles: gmapsSettings,
+      disableDefaultUI: true,
+      zoomControl: true
     });
 
     // Render markers on map
@@ -72,24 +75,14 @@ class GmapsCrimesComponent extends Component {
 
     // Loop through the newly created array of markers
     for(let marker of this.markers){
-
-        // let infoText = `<h2>${crime.summary}</h2><br><h3>${crime.name}</h3><br><p style="font-size: 20px;">Läs mer om detta brott <a style="text-decoration: none;"href="${crime.url}">här</a></p>`;
-        // let infoWindow = new window.google.maps.InfoWindow({
-        //   content: infoText
-        // });
+      this.infoText = [];
 
 
-      // _________________________________________________
-      // Here's where it gets a bit tricky:
-      // Below, the markers are created from the marker objects (with their
-      // crime count as labels). The if statement that filters markers depending
-      // on what type is selected has been commented out because it needs to
-      // be modified to work. Same goes for the event listener added to markers.
-      //
-      // Feel free to modify anything to make it work :)
-      // __________________________________________________
 
       if (this.props.selectedType === 'Alla') {
+        for(let crime of marker.crimes){
+          this.infoText += `<h3>${crime.name}</h3><br><h2>${crime.summary}</h2><br><p style="font-size: 16px;">Läs mer om detta brott <a style="text-decoration: none;"href="${crime.url}">här</a></p><br><hr><br>`;
+        }
         this.mapMarkers.push(new window.google.maps.Marker({
           position: { lat: marker.location.lat, lng: marker.location.lng },
           map: map,
@@ -97,17 +90,18 @@ class GmapsCrimesComponent extends Component {
             text: marker.crimes.length.toString(),
             color: 'white',
             fontWeight: 'bold'
-          }
+          },
+          infoWindow: new window.google.maps.InfoWindow({
+            content: this.infoText
+          })
         }));
-     
-
-          
-          // for(let crime of marker.crimes){
-          //   infoText += `<h3>${crime.name}</h3><br><h2>${crime.summary}</h2><br>`
-          // }
-
-
       } else if (marker.crimes.some(e => e.type === this.props.selectedType)){
+        let temp = marker.crimes.filter(crime => {
+            return crime.type === this.props.selectedType
+        })
+        for(let crime of temp) {
+          this.infoText += `<h3>${crime.name}</h3><br><h2>${crime.summary}</h2><br><p style="font-size: 16px;">Läs mer om detta brott <a style="text-decoration: none;"href="${crime.url}">här</a></p><br><hr><br>`;
+        }
         this.mapMarkers.push(new window.google.maps.Marker({
           position: { lat: marker.location.lat, lng: marker.location.lng },
           map: map,
@@ -117,24 +111,27 @@ class GmapsCrimesComponent extends Component {
             }).length.toString(),
             color: 'white',
             fontWeight: 'bold'
-          }
+          },
+          infoWindow: new window.google.maps.InfoWindow({
+            content: this.infoText
+          })
         }));
       }
     }
-    // for(let marker of this.mapMarkers){
-    //   marker.infoWindow = new window.google.maps.InfoWindow({
-    //     content: infoText
-    //   });
 
-    //   let markers = this.markers;
+    for(let marker of this.mapMarkers){
+      let markers = this.mapMarkers;
       
-    //   marker.addListener('click', function(){
-    //     for(let m of markers){
-    //       m.infoWindow.close();
-    //     }
-    //     infoWindow.open(map, marker);
-    //   })
-    // }
+      marker.addListener('click', function(){
+        for(let m of markers){
+          m.infoWindow.close();
+        }
+        marker.infoWindow.open(map, marker);
+      })
+    }
+
+    let markerCluster = new window.MarkerClusterer(this.map, this.mapMarkers, {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
   }
 
   render() {
