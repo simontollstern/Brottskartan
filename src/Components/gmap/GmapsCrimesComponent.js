@@ -70,15 +70,9 @@ class GmapsCrimesComponent extends Component {
       }
     }
 
-    console.log(this.markers);
-
-
     // Loop through the newly created array of markers
     for(let marker of this.markers){
       this.infoText = [];
-
-
-
       if (this.props.selectedType === 'Alla') {
         for(let crime of marker.crimes){
           this.infoText += `<h3>${crime.name}</h3><br><h2>${crime.summary}</h2><br><p style="font-size: 16px;">Läs mer om detta brott <a style="text-decoration: none;"href="${crime.url}">här</a></p><br><hr><br>`;
@@ -129,8 +123,10 @@ class GmapsCrimesComponent extends Component {
         marker.infoWindow.open(map, marker);
       })
     }
-
-    let markerCluster = new window.MarkerClusterer(this.map, this.mapMarkers, {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    var markerOptions = {
+      imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+    }
+    let markerCluster = new window.MarkerClusterer(this.map, this.mapMarkers, markerOptions);
 
   }
 
