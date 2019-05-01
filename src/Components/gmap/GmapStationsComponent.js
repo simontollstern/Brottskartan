@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import '../../googleMaps.css';
 import style from './GmapStationsComponent.module.css';
 import { setStationMap } from '../../Redux/actions';
+import gmapsSettings from './GmapsSettings.json'
 
 class GmapStationsComponent extends Component {
   map;
@@ -11,7 +12,13 @@ class GmapStationsComponent extends Component {
   componentDidMount(){
     this.map = new window.google.maps.Map(document.getElementById('map'),{
       center: { lat: 62.8, lng: 17.5671981 },
-      zoom: 5.3
+      zoom: 5.3,
+      styles: gmapsSettings,
+      disableDefaultUI: true,
+      zoomControl:true,
+      zoomControlOptions: {
+        position: window.google.maps.ControlPosition.RIGHT_TOP
+    },
     });
     this.props.setStationMap(this.map);
     this.renderMarkers(this.map);
