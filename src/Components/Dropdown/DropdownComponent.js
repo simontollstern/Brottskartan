@@ -10,6 +10,10 @@ class DropdownComponent extends Component {
     this.props.setType(document.querySelector('select').value);
   }
 
+  componentDidMount(){
+    this.props.setType('Alla');
+  }
+
   render() {
     // Define an empty array
     let crimeTypes = [];
