@@ -5,23 +5,20 @@ import { connect } from 'react-redux';
 
 class CrimeScreen extends Component {
   //Get the crime events from the Swedish police api
- 
+
   getData = () =>{
     fetch('https://polisen.se/api/events')
     .then(response => response.json())
     .then(data => this.props.getCrimes(data))
   }
 
-  
   componentDidMount() {
-    this.getData();
+     this.getData();
     //timer that call a function to get new data from the Polis-api
     setInterval(() => {
       this.getData();
     }, 300000);
   }
-
-
 
   render() {
     return (
