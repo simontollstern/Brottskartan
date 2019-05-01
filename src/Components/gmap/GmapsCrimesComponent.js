@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import gmapsSettings from './GmapsSettings.json';
+import { setCrimeMap } from '../../Redux/actions';
 
 // Component containing the map that displays crimes
 class GmapsCrimesComponent extends Component {
@@ -21,6 +22,7 @@ class GmapsCrimesComponent extends Component {
       disableDefaultUI: true,
       zoomControl: true
     });
+    this.props.setCrimeMap(this.map);
 
     // Render markers on map
     this.renderMarkers(this.map, this.props.selectedType);
@@ -69,8 +71,6 @@ class GmapsCrimesComponent extends Component {
         }
       }
     }
-
-    console.log(this.markers);
 
 
     // Loop through the newly created array of markers
@@ -147,4 +147,9 @@ const mapStateToProps = (state) => ({
   selectedType: state.root.selectedType
 });
 
-export default connect(mapStateToProps, null)(GmapsCrimesComponent);
+const mapDispatchToProps = (dispatch) => ({
+  setCrimeMap: (map) => dispatch(setCrimeMap(map))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(GmapsCrimesComponent);
+
