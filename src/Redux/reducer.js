@@ -13,7 +13,7 @@ const root = (state = initialState, action) => {
         ...state,
         crimes: [...state.crimes, ...action.payload]
       }
-      case 'GET_STATIONS': 
+      case 'GET_STATIONS':
       return {
         ...state,
         stations: [...state.stations, ...action.payload]
@@ -22,6 +22,21 @@ const root = (state = initialState, action) => {
       return {
         ...state,
         selectedType: action.payload
+      }
+      case 'SET_CRIME_MAP':
+      return {
+        ...state,
+        crimeMap: action.payload
+      }
+      case 'SET_STATION_MAP':
+      return {
+        ...state,
+        stationMap: action.payload
+      }
+      case 'SET_STAT_MAP':
+      return {
+        ...state,
+        statMap: action.payload
       }
     default:
       return state;

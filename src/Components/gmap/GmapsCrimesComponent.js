@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import gmapsSettings from './GmapsSettings.json';
+import { setCrimeMap } from '../../Redux/actions';
 
 // Component containing the map that displays crimes
 class GmapsCrimesComponent extends Component {
@@ -21,6 +22,7 @@ class GmapsCrimesComponent extends Component {
       disableDefaultUI: true,
       zoomControl: true
     });
+    this.props.setCrimeMap(this.map);
 
     // Render markers on map
     this.renderMarkers(this.map, this.props.selectedType);
@@ -75,7 +77,7 @@ class GmapsCrimesComponent extends Component {
       this.infoText = [];
       if (this.props.selectedType === 'Alla') {
         for(let crime of marker.crimes){
-          this.infoText += `<h3>${crime.name}</h3><br><h2>${crime.summary}</h2><br><p style="font-size: 16px;">Läs mer om detta brott <a style="text-decoration: none;"href="${crime.url}">här</a></p><br><hr><br>`;
+          this.infoText += `<div class="infoWindowCss"><h3>${crime.name}</h3><br><h2>${crime.summary}</h2><br><p style="font-size: 16px;">Läs mer om detta brott <a style="text-decoration: none;" target="_blank" href="${crime.url}">här</a></p><br></div>`;
         }
         this.mapMarkers.push(new window.google.maps.Marker({
           position: { lat: marker.location.lat, lng: marker.location.lng },
@@ -94,7 +96,7 @@ class GmapsCrimesComponent extends Component {
             return crime.type === this.props.selectedType
         })
         for(let crime of temp) {
-          this.infoText += `<h3>${crime.name}</h3><br><h2>${crime.summary}</h2><br><p style="font-size: 16px;">Läs mer om detta brott <a style="text-decoration: none;"href="${crime.url}">här</a></p><br><hr><br>`;
+          this.infoText += `<div class="infoWindowCss"><h3>${crime.name}</h3><br><h2>${crime.summary}</h2><br><p style="font-size: 16px;">Läs mer om detta brott <a style="text-decoration: none;" target="_blank" href="${crime.url}">här</a></p><br></div>`;
         }
         this.mapMarkers.push(new window.google.maps.Marker({
           position: { lat: marker.location.lat, lng: marker.location.lng },
@@ -143,4 +145,9 @@ const mapStateToProps = (state) => ({
   selectedType: state.root.selectedType
 });
 
-export default connect(mapStateToProps, null)(GmapsCrimesComponent);
+const mapDispatchToProps = (dispatch) => ({
+  setCrimeMap: (map) => dispatch(setCrimeMap(map))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(GmapsCrimesComponent);
+
