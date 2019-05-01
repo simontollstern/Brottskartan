@@ -17,3 +17,8 @@
   display: flex;
   justify-content: center;
 }
+
+.infoWindowCss:not(:last-child) {
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+}
