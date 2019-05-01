@@ -88,7 +88,7 @@ class GmapsCrimesComponent extends Component {
             fontWeight: 'bold'
           },
           infoWindow: new window.google.maps.InfoWindow({
-            content: this.infoText
+              content: this.infoText
           })
         }));
       } else if (marker.crimes.some(e => e.type === this.props.selectedType)){
@@ -109,7 +109,7 @@ class GmapsCrimesComponent extends Component {
             fontWeight: 'bold'
           },
           infoWindow: new window.google.maps.InfoWindow({
-            content: this.infoText
+              content: this.infoText
           })
         }));
       }
