@@ -29,13 +29,13 @@ function SearchFuncComponent(props) {
 
     // If props.stationMap !== undefined you can search on police stations, otherwise you can search for crimes
     if (!props.stationMap) {
-    // Reaches the station map from Redux
-    props.stationMap.fitBounds(bounds);
-    props.stationMap.setZoom(12);
+      // Reaches the station map from Redux
+      props.stationMap.fitBounds(bounds);
+      props.stationMap.setZoom(12);
 
-    let geocoder = new window.google.maps.Geocoder();
-    document.getElementById('submit').addEventListener('click', function() {
-    geocodeAddress(geocoder, props.stationMap);
+      let geocoder = new window.google.maps.Geocoder();
+      document.getElementById('submit').addEventListener('click', function() {
+      geocodeAddress(geocoder, props.stationMap);
   });
   }
 
@@ -47,9 +47,9 @@ function SearchFuncComponent(props) {
     let geocoder = new window.google.maps.Geocoder();
 
     document.getElementById('submit').addEventListener('click', function() {
-    console.log('Clicked')
-    geocodeAddress(geocoder, props.crimeMap);
-  });
+      console.log('Clicked')
+      geocodeAddress(geocoder, props.crimeMap);
+    });
   }
 
   })
