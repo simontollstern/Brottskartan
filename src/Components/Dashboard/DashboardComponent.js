@@ -8,7 +8,7 @@ class DashboardComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showType: 'crime',
+      showType: '',
       toggleInfo: false
     }
   }
