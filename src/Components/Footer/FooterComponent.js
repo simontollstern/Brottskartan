@@ -15,7 +15,8 @@ function FooterComponent(props) {
     arrows: false,
     draggable: false,
     centerMode: true,
-    variableWidth: true
+    variableWidth: true,
+    pauseOnHover: false
   };
 
 
