@@ -91,7 +91,7 @@ class GmapsCrimesComponent extends Component {
             fontWeight: 'bold'
           },
           infoWindow: new window.google.maps.InfoWindow({
-            content: this.infoText
+              content: this.infoText
           })
         }));
       } else if (marker.crimes.some(e => e.type === this.props.selectedType)){
@@ -112,7 +112,7 @@ class GmapsCrimesComponent extends Component {
             fontWeight: 'bold'
           },
           infoWindow: new window.google.maps.InfoWindow({
-            content: this.infoText
+              content: this.infoText
           })
         }));
       }
@@ -128,10 +128,10 @@ class GmapsCrimesComponent extends Component {
         marker.infoWindow.open(map, marker);
       })
     }
-    var markerOptions = {
-      imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
-    }
-    let markerCluster = new window.MarkerClusterer(this.map, this.mapMarkers, markerOptions);
+    // var markerOptions = {
+    //   imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+    // }
+    // let markerCluster = new window.MarkerClusterer(this.map, this.mapMarkers, markerOptions);
 
   }
 
