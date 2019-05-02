@@ -37,8 +37,8 @@ class DropdownComponent extends Component {
         }
       }
 
-      // Sort the array alphabetically
-      crimeTypes.sort((a, b) => (a.name > b.name) ? 1 : -1)
+      // Sort the array with objects alphabetically
+      crimeTypes.sort((a, b) => (a.name > b.name) ? 1 : -1);
 
     return (
       <div className={style.dropdownWrapper}>
