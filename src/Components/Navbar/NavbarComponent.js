@@ -41,7 +41,6 @@ class NavbarComponent extends Component {
     }  
   }
 
-
   stateFunc = (param) => {
     this.setState({
       infoText: this.infoTextObject[param]
