@@ -3,6 +3,9 @@ import StationMap from '../Components/gmap/GmapStationsComponent';
 import { getStations } from '../Redux/actions';
 import { connect } from 'react-redux'
 
+import DashboardComponent from '../../src/Components/Dashboard/DashboardComponent'
+import FooterComponent from '../../src/Components/Footer/FooterComponent';
+
 class StationsScreen extends Component {
 
   componentDidMount() {
@@ -19,7 +22,9 @@ class StationsScreen extends Component {
   render() {
     return (
       <div>
+        <DashboardComponent />
         <StationMap/>
+        <FooterComponent />
       </div>
     )
   }
