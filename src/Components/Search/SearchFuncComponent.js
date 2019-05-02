@@ -7,11 +7,13 @@ function SearchFuncComponent(props) {
   const preventAction = (e) => {
     e.preventDefault();
     let geocoder = new window.google.maps.Geocoder();
-      geocodeAddress(geocoder, props.stationMap);
-      geocodeAddress(geocoder, props.crimeMap);
-    
-     
-     
+
+      if(props.stationMap) {
+        geocodeAddress(geocoder, props.stationMap);
+      } else if (props.crimeMap) {
+        geocodeAddress(geocoder, props.crimeMap);
+      }
+
   }
 
  
@@ -31,31 +33,6 @@ function SearchFuncComponent(props) {
       bounds.extend(place.geometry.location);
     }
 
-    // If props.stationMap !== undefined you can search on police stations, otherwise you can search for crimes
-    if (props.stationMap !== undefined) {
-      // Reaches the station map from Redux
-      props.stationMap.fitBounds(bounds);
-      props.stationMap.setZoom(12);
-
-      let geocoder = new window.google.maps.Geocoder();
-      document.getElementById('submit').addEventListener('click', function() {
-        geocodeAddress(geocoder, props.stationMap);
-    });
-  }
-
-  if (props.crimeMap !== undefined){
-    // Reaches the crime map from Redux
-    props.crimeMap.fitBounds(bounds);
-    props.crimeMap.setZoom(12);
-
-    let geocoder = new window.google.maps.Geocoder();
-
-    document.getElementById('submit').addEventListener('click', function() {
-    console.log('Clicked')
-    geocodeAddress(geocoder, props.crimeMap);
-  });
-  }
-
   })
   },  0);
 
@@ -64,7 +41,7 @@ function SearchFuncComponent(props) {
     geocoder.geocode({'address': address}, function(results, status) {
       if (status === 'OK') {
         resultsMap.setCenter(results[0].geometry.location);
-        props.crimeMap.setZoom(10);
+        resultsMap.setZoom(10);
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
