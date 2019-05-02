@@ -1,6 +1,7 @@
 import React from 'react'
 import style from './SearchFuncComponent.module.css';
 import { connect } from 'react-redux';
+import { useEffect } from 'react'
 
 function SearchFuncComponent(props) {
 
@@ -17,7 +18,7 @@ function SearchFuncComponent(props) {
   }
 
  
-  setTimeout(()=>{
+  useEffect(()=>{
     // Connects our input field with google places (countries, cities etc..)
     let searchBox = new window.google.maps.places.SearchBox(document.getElementById('input'));
 
@@ -34,7 +35,7 @@ function SearchFuncComponent(props) {
     }
 
   })
-  },  0);
+  });
 
   function geocodeAddress(geocoder, resultsMap) {
     let address = document.getElementById('input').value;
