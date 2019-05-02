@@ -16,7 +16,7 @@ class CrimeScreen extends Component {
     .then(data => {
 
       // Remove wanted "crimes" from API
-     const removedDataFromCrimes = ['Arbetsplatsolycka', 'Fjällräddning', 'Försvunnen person', 'Gränskontroll', 'Kontroll person/fordon', 'Naturkatastrof', 'Sammanfattning dag', 'Sammanfattning dygn', 'Sammanfattning eftermiddag', 'Sammanfattning förmiddag', 'Sammanfattning helg', 'Sammanfattning kväll', 'Sammanfattning kväll och natt', 'Sammanfattning natt','Sammanfattning vecka', 'Sjukdom/olycksfall', 'Tillfälligt obemannat', 'Trafikhinder', 'Trafikkontroll', 'Trafikolycka', 'Trafikolycka, personskada', 'Trafikolycka, singel', 'Trafikolycka, smitning från', 'Trafikolycka, vilt', 'Uppdatering', 'Vaninglarm/haveri'];
+     const removedDataFromCrimes = ['Arbetsplatsolycka', 'Fjällräddning', 'Försvunnen person', 'Gränskontroll', 'Kontroll person/fordon', 'Naturkatastrof', 'Sammanfattning dag', 'Sammanfattning dygn', 'Sammanfattning eftermiddag', 'Sammanfattning förmiddag', 'Sammanfattning helg', 'Sammanfattning kväll', 'Sammanfattning kväll och natt', 'Sammanfattning natt','Sammanfattning vecka', 'Sjukdom/olycksfall', 'Tillfälligt obemannat', 'Trafikhinder', 'Trafikkontroll', 'Trafikolycka', 'Trafikolycka, personskada', 'Trafikolycka, singel', 'Trafikolycka, smitning från', 'Trafikolycka, vilt', 'Uppdatering', 'Vaninglarm/haveri', 'Övrigt'];
 
      // Filter wanted crimes into a new array
      const filteredCrimes = data.filter(crime => {

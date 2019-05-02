@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from "react-router-dom";
 import style from './NavbarComponent.module.css'
+import { withRouter } from 'react-router'
 
 class NavbarComponent extends Component {
   
@@ -12,10 +13,32 @@ class NavbarComponent extends Component {
 
   constructor(props) {
     super(props)
+
     this.state = {
-      infoText: this.infoTextObject.crime
-      //bug when refreshing ask robin
-    }
+      infoText: ''
+    }  
+  }
+
+  componentDidMount() {
+    switch (this.props.location.pathname) {
+      case '/brott':
+        this.setState({
+          infoText: this.infoTextObject.crime
+        })
+        break;
+        case '/polisstationer':
+        this.setState({
+          infoText: this.infoTextObject.stations
+        })
+        break;
+        case '/statistik':
+        this.setState({
+          infoText: this.infoTextObject.stats
+        })
+        break;
+      default:
+        break;
+    }  
   }
 
 
@@ -54,4 +77,4 @@ class NavbarComponent extends Component {
   }
 }
 
-export default NavbarComponent;
+export default  withRouter(NavbarComponent);
