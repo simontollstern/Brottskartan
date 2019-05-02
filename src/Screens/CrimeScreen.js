@@ -6,24 +6,43 @@ import { connect } from 'react-redux';
 class CrimeScreen extends Component {
   //Get the crime events from the Swedish police api
 
-  getData = () =>{
-    fetch('https://polisen.se/api/events')
+  getLatestData = () =>{
+    fetch('https://api.brottskarta.se/dagens')
     .then(response => response.json())
-    .then(data => this.props.getCrimes(data))
+    .then(data => {
+
+      // Remove wanted "crimes" from API
+     const removedDataFromCrimes = ['Arbetsplatsolycka', 'Fjällräddning', 'Försvunnen person', 'Gränskontroll', 'Kontroll person/fordon', 'Naturkatastrof', 'Sammanfattning dag', 'Sammanfattning dygn', 'Sammanfattning eftermiddag', 'Sammanfattning förmiddag', 'Sammanfattning helg', 'Sammanfattning kväll', 'Sammanfattning kväll och natt', 'Sammanfattning natt','Sammanfattning vecka', 'Sjukdom/olycksfall', 'Tillfälligt obemannat', 'Trafikhinder', 'Trafikkontroll', 'Trafikolycka', 'Trafikolycka, personskada', 'Trafikolycka, singel', 'Trafikolycka, smitning från', 'Trafikolycka, vilt', 'Uppdatering', 'Vaninglarm/haveri'];
+
+     // Filter wanted crimes into a new array
+     const filteredCrimes = data.filter(crime => {
+       // If crime.type does not exist in !removedDataFromCrimes, return the crime.type to filteredCrimes array
+       return !removedDataFromCrimes.includes(crime.type);
+     });
+
+     // Pass the new array with crimes to get Crimes
+      this.props.getCrimes(filteredCrimes);
+    })
   }
 
+  // getAllData = () =>{
+  //   fetch('https://api.brottskarta.se/dagens')
+  //   .then(response => response.json())
+  //   .then(data => this.props.getCrimes(data))
+  // }
+
   componentDidMount() {
-     this.getData();
+     this.getLatestData();
     //timer that call a function to get new data from the Polis-api
     setInterval(() => {
-      this.getData();
+      this.getLatestData();
     }, 300000);
   }
 
   render() {
     return (
       <div>
-        <CrimeMap/>
+        <CrimeMap />
       </div>
     )
   }

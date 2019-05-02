@@ -54,12 +54,12 @@ class GmapsCrimesComponent extends Component {
     // Loop through crimes aquired from the API..
     for(let crime of this.props.crimes){
       // ..if there already exists a crime with the same lat/lng in the marker array..
-      if(!this.markers.some(e => e.location.lat === Number(crime.location.gps.split(',')[0]) && e.location.lng === Number(crime.location.gps.split(',')[1]))){
+      if(!this.markers.some(e => e.location.lat === crime.coords_lat && e.location.lng === crime.coords_lng)){
         // ..add a new object to the array..
         this.markers.push({
           location: {
-            lat: Number(crime.location.gps.split(',')[0]),
-            lng: Number(crime.location.gps.split(',')[1])
+            lat: crime.coords_lat,
+            lng: crime.coords_lng
           },
           crimes: [
             crime
@@ -68,7 +68,7 @@ class GmapsCrimesComponent extends Component {
       }else{
         // ..otherwise add the crime to the crime array of the object with the same lat/lng
         for(let marker of this.markers){
-          if(marker.location.lat === Number(crime.location.gps.split(',')[0]) && marker.location.lng === Number(crime.location.gps.split(',')[1])){
+          if(marker.location.lat === crime.coords_lat && marker.location.lng === crime.coords_lng){
             marker.crimes.push(crime);
           }
         }
@@ -120,7 +120,7 @@ class GmapsCrimesComponent extends Component {
 
     for(let marker of this.mapMarkers){
       let markers = this.mapMarkers;
-      
+
       marker.addListener('click', function(){
         for(let m of markers){
           m.infoWindow.close();
