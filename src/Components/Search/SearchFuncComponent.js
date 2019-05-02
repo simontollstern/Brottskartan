@@ -3,10 +3,14 @@ import style from './SearchFuncComponent.module.css';
 import { connect } from 'react-redux';
 
 function SearchFuncComponent(props) {
+
   const preventAction = (e) => {
     e.preventDefault();
+    let geocoder = new window.google.maps.Geocoder();
+    geocodeAddress(geocoder, props.crimeMap);
   }
 
+ 
   setTimeout(()=>{
     // Connects our input field with google places (countries, cities etc..)
     let searchBox = new window.google.maps.places.SearchBox(document.getElementById('input'));
@@ -24,7 +28,7 @@ function SearchFuncComponent(props) {
     }
 
     // If props.stationMap !== undefined you can search on police stations, otherwise you can search for crimes
-    if (props.stationMap !== undefined) {
+    if (!props.stationMap) {
     // Reaches the station map from Redux
     props.stationMap.fitBounds(bounds);
     props.stationMap.setZoom(12);
@@ -35,7 +39,7 @@ function SearchFuncComponent(props) {
   });
   }
 
-  if (props.crimeMap !== undefined){
+  if (!props.crimeMap){
     // Reaches the crime map from Redux
     props.crimeMap.fitBounds(bounds);
     props.crimeMap.setZoom(12);
@@ -56,10 +60,7 @@ function SearchFuncComponent(props) {
     geocoder.geocode({'address': address}, function(results, status) {
       if (status === 'OK') {
         resultsMap.setCenter(results[0].geometry.location);
-        new window.google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location
-        });
+        props.crimeMap.setZoom(10);
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
@@ -76,9 +77,13 @@ function SearchFuncComponent(props) {
     )
 }
 
+
+
+
 const mapStateToProps = (state) => ({
   stationMap: state.root.stationMap,
   crimeMap: state.root.crimeMap
 });
+
 
 export default connect(mapStateToProps, null)(SearchFuncComponent)

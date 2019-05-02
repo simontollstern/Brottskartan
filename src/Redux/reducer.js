@@ -9,6 +9,8 @@ const initialState = {
 const root = (state = initialState, action) => {
   switch(action.type) {
     case 'GET_CRIMES':
+      // Reset the array
+      state.crimes = [];
       return {
         ...state,
         crimes: [...state.crimes, ...action.payload]

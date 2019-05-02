@@ -10,32 +10,35 @@ class DropdownComponent extends Component {
     this.props.setType(document.querySelector('select').value);
   }
 
-  render() {
+  componentDidMount(){
+    this.props.setType('Alla');
+  }
 
+  render() {
     // Define an empty array
     let crimeTypes = [];
 
     // Loop through the data from the API
-    for(let crime of this.props.crimes){
-      // If the array created above doesn't contain the type of the current crime
-      if(!crimeTypes.some(e => e.name === crime.type)) {
-        // Push the crime to the array
-        crimeTypes.push({
-          name: crime.type,
-          count: 1
-        })
-      } else {
-        // If it already exists - add 1 to its crime count
-        for(let type of crimeTypes) {
-          if(type.name === crime.type) {
-            type.count++;
+      for(let crime of this.props.crimes){
+        // If the array created above doesn't contain the type of the current crime
+        if(!crimeTypes.some(e => e.name === crime.type)) {
+          // Push the crime to the array
+          crimeTypes.push({
+            name: crime.type,
+            count: 1
+          })
+        } else {
+          // If it already exists - add 1 to its crime count
+          for(let type of crimeTypes) {
+            if(type.name === crime.type) {
+              type.count++;
+            }
           }
         }
       }
-    }
 
-    // Sort the array alphebetically
-    crimeTypes.sort();
+      // Sort the array alphabetically
+      crimeTypes.sort((a, b) => (a.name > b.name) ? 1 : -1)
 
     return (
       <div className={style.dropdownWrapper}>

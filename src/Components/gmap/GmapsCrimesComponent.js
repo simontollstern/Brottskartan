@@ -20,7 +20,10 @@ class GmapsCrimesComponent extends Component {
       zoom: 5.3,
       styles: gmapsSettings,
       disableDefaultUI: true,
-      zoomControl: true
+      zoomControl: true,
+      zoomControlOptions: {
+        position: window.google.maps.ControlPosition.RIGHT_TOP
+    },
     });
     this.props.setCrimeMap(this.map);
 
