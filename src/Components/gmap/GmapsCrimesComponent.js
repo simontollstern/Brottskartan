@@ -128,10 +128,10 @@ class GmapsCrimesComponent extends Component {
         marker.infoWindow.open(map, marker);
       })
     }
-    var markerOptions = {
-      imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
-    }
-    let markerCluster = new window.MarkerClusterer(this.map, this.mapMarkers, markerOptions);
+    // var markerOptions = {
+    //   imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+    // }
+    // let markerCluster = new window.MarkerClusterer(this.map, this.mapMarkers, markerOptions);
 
   }
 
