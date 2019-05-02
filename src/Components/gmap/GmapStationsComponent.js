@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../../googleMaps.css';
-import style from './GmapStationsComponent.module.css';
 import { setStationMap } from '../../Redux/actions';
 import gmapsSettings from './GmapsSettings.json'
 
@@ -26,7 +25,6 @@ class GmapStationsComponent extends Component {
 
 
   renderMarkers = (map) => {
-
 
     for(let station of this.props.stations){
       let marker = new window.google.maps.Marker({
@@ -92,11 +90,14 @@ class GmapStationsComponent extends Component {
     }
   }
 
+  componentDidUpdate(){
+    this.renderMarkers(this.map);
+  }
 
   render() {
     return (
       <div>
-        <div className={style.map} id='map'>
+        <div className='map' id='map'>
 
         </div>
       </div>

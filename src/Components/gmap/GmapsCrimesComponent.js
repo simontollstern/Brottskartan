@@ -126,7 +126,10 @@ class GmapsCrimesComponent extends Component {
         map.setZoom(8);
 
         for(let m of markers){
-          m.infoWindow.close();
+          if(m !== marker){
+            m.opened = false;
+            m.infoWindow.close();
+          }
         }
 
         marker.opened = !marker.opened;

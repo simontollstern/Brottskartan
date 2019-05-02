@@ -3,6 +3,10 @@ import CrimeMap from '../Components/gmap/GmapsCrimesComponent';
 import { getCrimes } from '../Redux/actions';
 import { connect } from 'react-redux';
 
+import DashboardComponent from '../../src/Components/Dashboard/DashboardComponent'
+import FooterComponent from '../../src/Components/Footer/FooterComponent';
+
+
 class CrimeScreen extends Component {
   //Get the crime events from the Swedish police api
 
@@ -42,7 +46,9 @@ class CrimeScreen extends Component {
   render() {
     return (
       <div>
+        <DashboardComponent />
         <CrimeMap />
+        <FooterComponent />
       </div>
     )
   }
