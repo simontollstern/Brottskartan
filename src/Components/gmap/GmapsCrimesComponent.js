@@ -92,7 +92,8 @@ class GmapsCrimesComponent extends Component {
           },
           infoWindow: new window.google.maps.InfoWindow({
               content: this.infoText
-          })
+          }),
+          opened: false
         }));
       } else if (marker.crimes.some(e => e.type === this.props.selectedType)){
         let temp = marker.crimes.filter(crime => {
@@ -122,10 +123,16 @@ class GmapsCrimesComponent extends Component {
       let markers = this.mapMarkers;
 
       marker.addListener('click', function(){
+        map.panTo(marker.position);
+        map.setZoom(8);
+
         for(let m of markers){
           m.infoWindow.close();
         }
-        marker.infoWindow.open(map, marker);
+
+        marker.opened = !marker.opened;
+
+        marker.opened ? marker.infoWindow.open(map, marker) : marker.infoWindow.close();
       })
     }
     // var markerOptions = {
@@ -153,4 +160,3 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(GmapsCrimesComponent);
-
