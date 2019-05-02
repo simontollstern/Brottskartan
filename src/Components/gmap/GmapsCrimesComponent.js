@@ -9,7 +9,6 @@ class GmapsCrimesComponent extends Component {
   // Defining variables (use this. to access them)
   map;
   markers = [];
-  markerCluster;
   mapMarkers = [];
   infoText = "";
 
@@ -135,11 +134,6 @@ class GmapsCrimesComponent extends Component {
         marker.opened ? marker.infoWindow.open(map, marker) : marker.infoWindow.close();
       })
     }
-    // var markerOptions = {
-    //   imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
-    // }
-    // let markerCluster = new window.MarkerClusterer(this.map, this.mapMarkers, markerOptions);
-
   }
 
   render() {

@@ -26,11 +26,13 @@ const root = (state = initialState, action) => {
       case 'SET_CRIME_MAP':
       return {
         ...state,
+        stationMap: undefined,
         crimeMap: action.payload
       }
       case 'SET_STATION_MAP':
       return {
         ...state,
+        crimeMap: undefined,
         stationMap: action.payload
       }
       case 'SET_STAT_MAP':
