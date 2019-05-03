@@ -38,7 +38,9 @@ function FooterComponent(props) {
 
   return (
     <div className={style.boxStyle}>
-      <h4 className={style.latest}>Senaste Nytt:</h4>
+      <h4 className={style.latest}>
+        Senaste Nytt:
+      </h4>
       <div className={style.news}>
         <div className={style.slider}>
           {props.crimes.map((crime, i) => {

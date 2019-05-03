@@ -21,10 +21,10 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact component={redirectStartPageToCrimes}/>
-          <Route path="/brott" exact component={CrimeScreen} />
-          <Route path="/polisstationer" exact component={StationsScreen} />
-          <Route path="/statistik" exact component={StatsScreen} />
-          <Route component={NoMatch} />
+          <Route path="/brott" exact component={CrimeScreen}/>
+          <Route path="/polisstationer" exact component={StationsScreen}/>
+          <Route path="/statistik" exact component={StatsScreen}/>
+          <Route component={NoMatch}/>
         </Switch>
       </Router>
     </div>
