@@ -19,10 +19,10 @@ class CrimeScreen extends Component {
      const removedDataFromCrimes = ['Arbetsplatsolycka', 'Fjällräddning', 'Försvunnen person', 'Gränskontroll', 'Kontroll person/fordon', 'Naturkatastrof', 'Sammanfattning dag', 'Sammanfattning dygn', 'Sammanfattning eftermiddag', 'Sammanfattning förmiddag', 'Sammanfattning helg', 'Sammanfattning kväll', 'Sammanfattning kväll och natt', 'Sammanfattning natt','Sammanfattning vecka', 'Sjukdom/olycksfall', 'Tillfälligt obemannat', 'Trafikhinder', 'Trafikkontroll', 'Trafikolycka', 'Trafikolycka, personskada', 'Trafikolycka, singel', 'Trafikolycka, smitning från', 'Trafikolycka, vilt', 'Uppdatering', 'Vaninglarm/haveri', 'Övrigt'];
 
      // Filter wanted crimes into a new array
-     const filteredCrimes = data.filter(crime => {
+     const filteredCrimes = data.filter(crime => 
        // If crime.type does not exist in !removedDataFromCrimes, return the crime.type to filteredCrimes array
-       return !removedDataFromCrimes.includes(crime.type);
-     });
+       !removedDataFromCrimes.includes(crime.type)
+     );
 
      // Pass the new array with crimes to get Crimes
       this.props.getCrimes(filteredCrimes);
@@ -46,9 +46,9 @@ class CrimeScreen extends Component {
   render() {
     return (
       <div>
-        <DashboardComponent />
-        <CrimeMap />
-        <FooterComponent />
+        <DashboardComponent/>
+        <CrimeMap/>
+        <FooterComponent/>
       </div>
     )
   }

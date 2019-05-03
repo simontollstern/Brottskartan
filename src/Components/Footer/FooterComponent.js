@@ -22,11 +22,20 @@ function FooterComponent(props) {
 
   return (
     <div className={style.boxStyle}>
-      <h4 className={style.latest}>Senaste Nytt:</h4>
+      <h4 className={style.latest}>
+        Senaste Nytt:
+      </h4>
       <div className={style.news}>
         <Slider {...settings}>
           {props.crimes.map((crime, i) => {
-            return i < 5 && <div key={i}><h5>{crime.name}</h5></div>
+            return (
+              i < 5 && 
+              <div key={i}>
+                <h5>
+                  {crime.name}
+                </h5>
+              </div>
+            )
           })}
         </Slider>
       </div>

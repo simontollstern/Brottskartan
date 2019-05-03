@@ -34,12 +34,6 @@ class GmapsCrimesComponent extends Component {
     this.renderMarkers(this.map, this.props.selectedType);
   }
 
-  // Some CSS for the map
-  mapStyle = {
-    width: "100%",
-    height: "100vh"
-  };
-
   // Big function - feel free to split into smaller ones
   renderMarkers = (map, type) => {
     // Loop through all markers and remove them from the map
@@ -53,7 +47,9 @@ class GmapsCrimesComponent extends Component {
     // Loop through crimes aquired from the API..
     for(let crime of this.props.crimes){
       // ..if there already exists a crime with the same lat/lng in the marker array..
-      if(!this.markers.some(e => e.location.lat === crime.coords_lat && e.location.lng === crime.coords_lng)){
+      if(!this.markers.some(
+        e => e.location.lat === crime.coords_lat && 
+          e.location.lng === crime.coords_lng)){
         // ..add a new object to the array..
         this.markers.push({
           location: {
@@ -67,7 +63,8 @@ class GmapsCrimesComponent extends Component {
       }else{
         // ..otherwise add the crime to the crime array of the object with the same lat/lng
         for(let marker of this.markers){
-          if(marker.location.lat === crime.coords_lat && marker.location.lng === crime.coords_lng){
+          if(marker.location.lat === crime.coords_lat && 
+            marker.location.lng === crime.coords_lng){
             marker.crimes.push(crime);
           }
         }
@@ -78,11 +75,28 @@ class GmapsCrimesComponent extends Component {
     for(let marker of this.markers){
       this.infoText = [];
       if (this.props.selectedType === 'Alla') {
+
         for(let crime of marker.crimes){
-          this.infoText += `<div class="infoWindowCss"><h3>${crime.name}</h3><br><h2>${crime.summary}</h2><br><p style="font-size: 16px;">Läs mer om detta brott <a style="text-decoration: none;" target="_blank" href="${crime.url}">här</a></p><br></div>`;
+          
+          this.infoText += 
+            `<div class="infoWindowCss">
+                <h3>${crime.name}</h3>
+                <br>
+                <h2>${crime.summary}</h2>
+                <br>
+                <p style="font-size: 16px;">
+                Läs mer om detta brott 
+                <a style="text-decoration: none;" target="_blank" href="${crime.url}">
+                  här
+                </a>
+                </p><br>
+            </div>`;
         }
         this.mapMarkers.push(new window.google.maps.Marker({
-          position: { lat: marker.location.lat, lng: marker.location.lng },
+          position: { 
+            lat: marker.location.lat, 
+            lng: marker.location.lng 
+          },
           map: map,
           label: {
             text: marker.crimes.length.toString(),
@@ -95,19 +109,36 @@ class GmapsCrimesComponent extends Component {
           opened: false
         }));
       } else if (marker.crimes.some(e => e.type === this.props.selectedType)){
-        let temp = marker.crimes.filter(crime => {
-            return crime.type === this.props.selectedType
-        })
+
+        let temp = marker.crimes.filter(crime => crime.type === this.props.selectedType)
+
         for(let crime of temp) {
-          this.infoText += `<div class="infoWindowCss"><h3>${crime.name}</h3><br><h2>${crime.summary}</h2><br><p style="font-size: 16px;">Läs mer om detta brott <a style="text-decoration: none;" target="_blank" href="${crime.url}">här</a></p><br></div>`;
+          this.infoText += 
+          `<div class="infoWindowCss">
+              <h3>${crime.name}</h3>
+              <br>
+              <h2>${crime.summary}</h2><br>
+              <p style="font-size: 16px;">
+                Läs mer om detta brott 
+                <a 
+                style="text-decoration: none;"
+                target="_blank" href="${crime.url}">
+                här
+                </a>
+              </p>
+              <br>
+          </div>`;
         }
         this.mapMarkers.push(new window.google.maps.Marker({
-          position: { lat: marker.location.lat, lng: marker.location.lng },
+          position: { 
+            lat: marker.location.lat, 
+            lng: marker.location.lng 
+          },
           map: map,
           label: {
-            text: marker.crimes.filter(marker => {
-             return marker.type === this.props.selectedType
-            }).length.toString(),
+            text: marker.crimes.filter(marker => 
+              marker.type === this.props.selectedType
+            ).length.toString(),
             color: 'white',
             fontWeight: 'bold'
           },
@@ -142,7 +173,7 @@ class GmapsCrimesComponent extends Component {
   render() {
 
     return (
-      <div style={this.mapStyle} id="map"></div>
+      <div className='map' id="map"></div>
     )
   }
 }
