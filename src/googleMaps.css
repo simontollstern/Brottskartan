@@ -13,7 +13,7 @@
   font-weight: bold;
 }
 
-.flextest {
+.flex {
   display: flex;
   justify-content: center;
 }

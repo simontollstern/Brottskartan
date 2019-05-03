@@ -39,22 +39,32 @@ class DashboardComponent extends Component {
           {this.state.toggleInfo &&
             <div className={style.aboutUs}>
               <h3>Välkommen till Brottskarta.se</h3>
-              <hr></hr>
-              <p>Här visas brott hämtade från Polisen, med hjälp av Polisens öppna api.</p>
+              <p>
+                Här visas brott hämtade från Polisen, med hjälp av Polisens öppna api.
+              </p>
               <br/>
-              <p>Efter lite research så tyckte vi att detta var en utmärkt ide för att få fler personer mer aktiva i att ha en överblick över vad som sker i sverige på ett neutralt och lätt sätt.</p>
+              <p>
+                Efter lite research så tyckte vi att detta var en utmärkt ide för att få fler personer mer aktiva i att ha en överblick över vad som sker i sverige på ett neutralt och lätt sätt.
+              </p>
               <br/>
-              <p>Alla länkar på denna sidan leder till Polisen.se</p>
-              <p>All information angående länkningspolicy finns <a target="_blank" rel="noopener noreferrer" href="https://polisen.se/om-polisen/om-webbplatsen/lankningspolicy/">här</a></p>
-              <p>&copy;</p>
+              <p>
+                Alla länkar på denna sidan leder till Polisen.se
+              </p>
+              <p>
+                All information angående länkningspolicy finns &nbsp;
+                <a target="_blank" href="https://polisen.se/om-polisen/om-webbplatsen/lankningspolicy/">
+                här 
+                </a>
+                </p>
+              <p>
+                &copy;
+              </p>
             </div>
           }
 
         </div>
-        <NavbarComponent
-        updateType={this.updateType}
-        />
-        <SearchFuncComponent />
+        <NavbarComponent updateType={this.updateType}/>
+        <SearchFuncComponent/>
 
         {this.state.showType === 'crime' &&
           <DropdownComponent/>

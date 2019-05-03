@@ -35,8 +35,8 @@ function SearchFuncComponent(props) {
 
     // If crime map is not undefined, go to the following
     if (props.crimeMap !== undefined) {
-    props.crimeMap.fitBounds(bounds);
-    props.crimeMap.setZoom(10);
+      props.crimeMap.fitBounds(bounds);
+      props.crimeMap.setZoom(10);
     }
 
     // If crime map is not undefined, go to the following
@@ -63,8 +63,19 @@ function SearchFuncComponent(props) {
     return (
       <div>
         <form onSubmit={preventAction}>
-         <input id="input" className={style.search} placeholder='Sök plats...' type="text"/>
-         <button id="submit" type="submit" className={style.searchButton}>Sök</button>
+         <input 
+          id="input" 
+          className={style.search} 
+          placeholder='Sök plats...' 
+          type="text"
+          />
+         <button 
+          id="submit" 
+          type="submit" 
+          className={style.searchButton}
+          >
+          Sök
+          </button>
         </form>
       </div>
     )
