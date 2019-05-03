@@ -6,7 +6,7 @@ import { withRouter } from 'react-router'
 class NavbarComponent extends Component {
 
   infoTextObject = {
-    crime: 'Här visar vi de 500 senaste brotten',
+    crime: 'Här visas senaste dygnets brott',
     stations: 'Här visas alla tillgängliga polisstationer',
     stats: 'Här visar vi statistik över brott i Sverige'
   }
