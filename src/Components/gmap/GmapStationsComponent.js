@@ -31,6 +31,8 @@ class GmapStationsComponent extends Component {
         position: { lat: Number(station.location.gps.split(',')[0]), lng: Number(station.location.gps.split(',')[1]) },
         map: map
       });
+      console.log(station)
+
 
       this.markers.push(marker);
 
