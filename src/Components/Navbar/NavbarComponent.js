@@ -47,20 +47,26 @@ class NavbarComponent extends Component {
     return (
       <div className={style.wrapper}>
         <ul className={style.navUl}>
-          <NavLink to="/brott" activeClassName={style.activeLink}
-          onClick={()=> {this.stateFunc('crime')}}
-          >
+          <NavLink 
+            to="/brott" 
+            activeClassName={style.activeLink}
+            onClick={()=> {this.stateFunc('crime')}}
+            >
             <li className={style.navLi}>Brott</li>
           </NavLink>
 
-          <NavLink to="/polisstationer" activeClassName={style.activeLink}
-          onClick={()=> {this.stateFunc('stations')}}
+          <NavLink 
+            to="/polisstationer" 
+            activeClassName={style.activeLink}
+            onClick={()=> {this.stateFunc('stations')}}
           >
             <li className={style.navLi}>Polisstationer</li>
           </NavLink>
 
-          <NavLink to="/statistik" activeClassName={style.activeLink}
-          onClick={()=> {this.stateFunc('stats')}}
+          <NavLink 
+            to="/statistik" 
+            activeClassName={style.activeLink}
+            onClick={()=> {this.stateFunc('stats')}}
           >
             <li className={style.navLi}>Statistik</li>
           </NavLink>
