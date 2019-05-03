@@ -4,7 +4,7 @@ import style from './NavbarComponent.module.css'
 import { withRouter } from 'react-router'
 
 class NavbarComponent extends Component {
-  
+
   infoTextObject = {
     crime: 'Här visar vi de 500 senaste brotten',
     stations: 'Här visas alla tillgängliga polisstationer',
@@ -16,7 +16,7 @@ class NavbarComponent extends Component {
 
     this.state = {
       infoText: ''
-    }  
+    }
   }
 
   componentDidMount() {
@@ -36,9 +36,9 @@ class NavbarComponent extends Component {
           infoText: this.infoTextObject.stats
         })
         break;
-      default:
+        default:
         break;
-    }  
+    }
   }
 
   stateFunc = (param) => {

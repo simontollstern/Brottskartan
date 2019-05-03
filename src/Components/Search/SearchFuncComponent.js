@@ -14,10 +14,9 @@ function SearchFuncComponent(props) {
       } else if (props.crimeMap) {
         geocodeAddress(geocoder, props.crimeMap);
       }
-
   }
 
- 
+
   useEffect(()=>{
     // Connects our input field with google places (countries, cities etc..)
     let searchBox = new window.google.maps.places.SearchBox(document.getElementById('input'));
@@ -34,6 +33,18 @@ function SearchFuncComponent(props) {
       bounds.extend(place.geometry.location);
     }
 
+    // If crime map is not undefined, go to the following
+    if (props.crimeMap !== undefined) {
+    props.crimeMap.fitBounds(bounds);
+    props.crimeMap.setZoom(10);
+    }
+
+    // If crime map is not undefined, go to the following
+    if (props.stationMap !== undefined) {
+      props.stationMap.fitBounds(bounds);
+      props.stationMap.setZoom(10);
+    }
+
   })
   });
 
@@ -44,7 +55,7 @@ function SearchFuncComponent(props) {
         resultsMap.setCenter(results[0].geometry.location);
         resultsMap.setZoom(10);
       } else {
-        alert('Geocode was not successful for the following reason: ' + status);
+        // alert('Geocode was not successful for the following reason: ' + status);
       }
     });
   }
@@ -52,15 +63,12 @@ function SearchFuncComponent(props) {
     return (
       <div>
         <form onSubmit={preventAction}>
-         <input id="input" className={style.search} placeholder='Sök' type="text"/>
+         <input id="input" className={style.search} placeholder='Sök plats...' type="text"/>
          <button id="submit" type="submit" className={style.searchButton}>Sök</button>
         </form>
       </div>
     )
 }
-
-
-
 
 const mapStateToProps = (state) => ({
   stationMap: state.root.stationMap,
