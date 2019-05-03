@@ -6,6 +6,7 @@ import { withRouter } from 'react-router'
 class NavbarComponent extends Component {
 
   infoTextObject = {
+
     crime: 'Här visas senaste dygnets brott',
     stations: 'Här visas alla tillgängliga polisstationer',
     stats: 'Här visar vi statistik över brott i Sverige'
@@ -30,7 +31,7 @@ class NavbarComponent extends Component {
         case '/statistik':
         this.stateFunc('stats');
         break;
-      default:
+        default:
         break;
     }
   }
