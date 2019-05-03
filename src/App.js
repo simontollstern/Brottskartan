@@ -11,7 +11,7 @@ import NoMatch from './Components/NoMatch/NoMatchComponent';
 
 // * Redirect the startpage / to /brott/
 const redirectStartPageToCrimes = () => {
-  return <Redirect from="/" to="/brott/" />
+  return <Redirect from="/" to="/brott" />
 }
 
 function App() {
