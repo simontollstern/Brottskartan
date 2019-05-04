@@ -28,9 +28,7 @@ function SearchFuncComponent(props) {
 
     // bound
     let bounds = new window.google.maps.LatLngBounds();
-    let i, place;
-
-    for(i = 0; place = places[i]; i++) {
+    for(let place of places){
       bounds.extend(place.geometry.location);
     }
 
