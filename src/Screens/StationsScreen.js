@@ -16,7 +16,14 @@ class StationsScreen extends Component {
    getStations = () => {
     fetch('https://polisen.se/api/policestations')
     .then(response => response.json())
-    .then(data => this.props.getStations(data))
+    .then(data => {
+      const filteredStations = data.filter(station => {
+        if(station.location.gps !== "0,0"){
+          return station;
+        }
+      })
+      this.props.getStations(filteredStations)
+    })
   }
 
   render() {

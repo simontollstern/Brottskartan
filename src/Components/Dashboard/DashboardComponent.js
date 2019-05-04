@@ -30,20 +30,41 @@ class DashboardComponent extends Component {
           <h1 className={style.header}>
             Brottskarta
           </h1>
-          <button className={style.link} onClick={this.toggleInfo}>Om oss</button>
+          <button
+            className={style.link}
+            onClick={this.toggleInfo}>
+            Om oss
+          </button>
 
-          {
-          this.state.toggleInfo &&
+          {this.state.toggleInfo &&
             <div className={style.aboutUs}>
-              <p>Dolor sint ullamco anim minim incididunt ut velit excepteur non consectetur labore duis ea proident. Cupidatat aliquip ullamco aute aute et dolor eiusmod anim. Eiusmod anim elit sunt culpa. Dolore amet consequat exercitation anim excepteur tempor. Nostrud exercitation quis sit eu amet.</p>
+              <h3>Välkommen till Brottskarta.se</h3>
+              <p>
+                Här visas brott hämtade från Polisen, med hjälp av Polisens öppna api.
+              </p>
+              <br/>
+              <p>
+                Efter lite research så tyckte vi att detta var en utmärkt ide för att få fler personer mer aktiva i att ha en överblick över vad som sker i sverige på ett neutralt och lätt sätt.
+              </p>
+              <br/>
+              <p>
+                Alla länkar på denna sidan leder till Polisen.se
+              </p>
+              <p>
+                All information angående länkningspolicy finns &nbsp;
+                <a target="_blank" rel="noopener noreferrer" href="https://polisen.se/om-polisen/om-webbplatsen/lankningspolicy/">
+                här 
+                </a>
+                </p>
+              <p>
+                &copy;
+              </p>
             </div>
           }
 
         </div>
-        <NavbarComponent
-        updateType={this.updateType}
-        />
-        <SearchFuncComponent />
+        <NavbarComponent updateType={this.updateType}/>
+        <SearchFuncComponent/>
 
         {this.state.showType === 'crime' &&
           <DropdownComponent/>

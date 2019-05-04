@@ -10,7 +10,10 @@ class GmapStationsComponent extends Component {
 
   componentDidMount(){
     this.map = new window.google.maps.Map(document.getElementById('map'),{
-      center: { lat: 62.8, lng: 17.5671981 },
+      center: { 
+        lat: 62.8, 
+        lng: 17.5671981 
+      },
       zoom: 5.3,
       styles: gmapsSettings,
       disableDefaultUI: true,
@@ -27,8 +30,13 @@ class GmapStationsComponent extends Component {
   renderMarkers = (map) => {
 
     for(let station of this.props.stations){
+      
+     
       let marker = new window.google.maps.Marker({
-        position: { lat: Number(station.location.gps.split(',')[0]), lng: Number(station.location.gps.split(',')[1]) },
+        position: {
+          lat: Number(station.location.gps.split(',')[0]), 
+          lng: Number(station.location.gps.split(',')[1]) 
+        },
         map: map
       });
 
@@ -41,34 +49,22 @@ class GmapStationsComponent extends Component {
       }
 
        let infoText =
-        `<div class="flextest">
-          <h2>
-            Polisstation:&nbsp;<h2 class="bold">${station.name}</h2>
+        `<div class="flex">
+          <h2>Polisstation:&nbsp;
+            <h2 class="bold">${station.name}</h2>
           </h2>
         </div>
-
         <br>
         <hr>
         <br>
-
-        <h2>
-          Dessa ärenden hanteras här:
-        </h2>
-
+        <h2>Dessa ärenden hanteras här:</h2>
         <br>
-
         <ul class="ulStyle">
           ${services}
         </ul>
-
         <br>
-
-        <h3>
-          Address: ${station.location.name}
-        </h3>
-
+        <h3>Address: ${station.location.name}</h3>
         <br>
-
         Mer information om Polisstationen i ${station.name}:
         <a href="${station.Url}" target='_blank'>
         Klicka här
