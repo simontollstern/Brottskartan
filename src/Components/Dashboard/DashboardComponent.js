@@ -30,8 +30,8 @@ class DashboardComponent extends Component {
           <h1 className={style.header}>
             Brottskarta
           </h1>
-          <button 
-            className={style.link} 
+          <button
+            className={style.link}
             onClick={this.toggleInfo}>
             Om oss
           </button>
@@ -52,7 +52,7 @@ class DashboardComponent extends Component {
               </p>
               <p>
                 All information angående länkningspolicy finns &nbsp;
-                <a target="_blank" href="https://polisen.se/om-polisen/om-webbplatsen/lankningspolicy/">
+                <a target="_blank" rel="noopener noreferrer" href="https://polisen.se/om-polisen/om-webbplatsen/lankningspolicy/">
                 här 
                 </a>
                 </p>

@@ -22,7 +22,7 @@
   padding: 0.5px 30px;
   background-color: #395060;
   text-align: center;
-} 
+}
 
 h4 {
   text-align: center;
@@ -56,15 +56,19 @@ h5:before {
   max-height: 26px;
 }
 
-.slick-slide{
-  height: auto;
+.slider{
+  display: flex;
+  overflow-x: hidden;
 }
 
-.slick-track{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: stretch;
+.slider > div{
+  flex-grow: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.slider > div:hover h5{
+  color: yellow;
 }
 
 @media screen and (max-width: 500px) {
