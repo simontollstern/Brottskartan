@@ -30,8 +30,10 @@ class GmapStationsComponent extends Component {
   renderMarkers = (map) => {
 
     for(let station of this.props.stations){
+      
+     
       let marker = new window.google.maps.Marker({
-        position: { 
+        position: {
           lat: Number(station.location.gps.split(',')[0]), 
           lng: Number(station.location.gps.split(',')[1]) 
         },
