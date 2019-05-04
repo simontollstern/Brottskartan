@@ -22,9 +22,9 @@ class StationsScreen extends Component {
   render() {
     return (
       <div>
-        <DashboardComponent />
+        <DashboardComponent/>
         <StationMap/>
-        <FooterComponent />
+        <FooterComponent/>
       </div>
     )
   }
