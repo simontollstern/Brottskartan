@@ -37,6 +37,7 @@ function FooterComponent(props) {
     }
   });
 
+
   return (
     <div className={style.boxStyle}>
       <h4 className={style.latest}>

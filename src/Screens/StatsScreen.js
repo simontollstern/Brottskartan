@@ -8,9 +8,9 @@ class StatsScreen extends Component {
   render() {
     return (
       <div>
-        <DashboardComponent />
+        <DashboardComponent/>
         <Gmaps/>
-        <FooterComponent />
+        <FooterComponent/>
       </div>
     )
   }
