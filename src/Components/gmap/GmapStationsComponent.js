@@ -4,10 +4,12 @@ import '../../googleMaps.css';
 import { setStationMap } from '../../Redux/actions';
 import gmapsSettings from './GmapsSettings.json'
 
+// render stations to the station screen 
 class GmapStationsComponent extends Component {
   map;
   markers = [];
 
+  // sets a new map when component mounts 
   componentDidMount(){
     this.map = new window.google.maps.Map(document.getElementById('map'),{
       center: { 
@@ -26,12 +28,11 @@ class GmapStationsComponent extends Component {
     this.renderMarkers(this.map);
   }
 
-
+// adds markers to out map
   renderMarkers = (map) => {
 
+    // grabs one obejct of array and give tem a marker
     for(let station of this.props.stations){
-      
-     
       let marker = new window.google.maps.Marker({
         position: {
           lat: Number(station.location.gps.split(',')[0]), 
@@ -43,7 +44,7 @@ class GmapStationsComponent extends Component {
       this.markers.push(marker);
 
       let services = "";
-
+      // loops through the object of station.services and sets the services of each station 
       for(let service of station.services) {
         services += '<li>' + service.name + '</li>';
       }
@@ -77,7 +78,9 @@ class GmapStationsComponent extends Component {
       marker.infoWindow = infoWindow;
       let markers = this.markers;
 
+      // adds listener to each station marker 
       marker.addListener('click', function(){
+        // closes one infoWindow if another marker is clicked
         for(let m of markers){
           m.infoWindow.close();
         }
@@ -85,7 +88,7 @@ class GmapStationsComponent extends Component {
       })
     }
   }
-
+  // when our state changes we update the map with our markers
   componentDidUpdate(){
     this.renderMarkers(this.map);
   }
@@ -101,10 +104,12 @@ class GmapStationsComponent extends Component {
   }
 }
 
+// grabs our stations from redux state
 const mapStateToProps = (state) => ({
   stations: state.root.stations
 });
 
+// grabs a function from our redux store
 const mapDispatchToProps = (dispatch) => ({
   setStationMap: (map) => dispatch(setStationMap(map))
 })

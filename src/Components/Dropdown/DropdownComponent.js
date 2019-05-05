@@ -3,6 +3,7 @@ import style from './DropdownComponent.module.css';
 import { setType } from '../../Redux/actions';
 import { connect } from 'react-redux';
 
+//creates a dropdown menu 
 class DropdownComponent extends Component {
 
   // Sends the selected value to the Redux store
@@ -10,6 +11,7 @@ class DropdownComponent extends Component {
     this.props.setType(document.querySelector('select').value);
   }
 
+  // when mounted shows all crimes
   componentDidMount(){
     this.props.setType('Alla');
   }
@@ -67,10 +69,12 @@ class DropdownComponent extends Component {
   }
 }
 
+// this set our Redux state as a prop
 const mapStateToProps = (state) => ({
   crimes: state.root.crimes
 });
 
+// this sends a function to props 
 const mapDispatchToProps = (dispatch) => ({
   setType: (type) => dispatch(setType(type))
 });

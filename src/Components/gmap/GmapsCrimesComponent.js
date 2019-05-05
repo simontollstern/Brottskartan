@@ -30,6 +30,7 @@ class GmapsCrimesComponent extends Component {
     this.renderMarkers(this.map, this.props.selectedType);
   }
 
+  //when update run function 
   componentDidUpdate() {
     this.renderMarkers(this.map, this.props.selectedType);
   }
@@ -75,7 +76,7 @@ class GmapsCrimesComponent extends Component {
     for(let marker of this.markers){
       this.infoText = [];
       if (this.props.selectedType === 'Alla') {
-
+        //loops through the markers of crimes and give them an infoTextbox
         for(let crime of marker.crimes){
           
           this.infoText += 
@@ -149,6 +150,7 @@ class GmapsCrimesComponent extends Component {
       }
     }
 
+    //loops through the all mapMarkers and adds click function to it, and some settings for google api
     for(let marker of this.mapMarkers){
       let markers = this.mapMarkers;
 
@@ -156,6 +158,7 @@ class GmapsCrimesComponent extends Component {
         map.panTo(marker.position);
         map.setZoom(8);
 
+        //checks if the marker is open and close it 
         for(let m of markers){
           if(m !== marker){
             m.opened = false;

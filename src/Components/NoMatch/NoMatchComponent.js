@@ -2,6 +2,7 @@ import React from 'react'
 
 import style from './NoMatch.module.css';
 
+// this component renders if routing fails
 function NoMatchComponent() {
   return (
     <div className={style.background}>
