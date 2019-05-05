@@ -56,21 +56,6 @@ h5:before {
   max-height: 26px;
 }
 
-.slider{
-  display: flex;
-  overflow-x: hidden;
-}
-
-.slider > div{
-  flex-grow: 0;
-  flex-shrink: 0;
-  cursor: pointer;
-}
-
-.slider > div:hover h5{
-  color: yellow;
-}
-
 @media screen and (max-width: 500px) {
   .latest{
   display:none;
