@@ -1,0 +1,14 @@
+#slider{
+  display: flex;
+  overflow-x: hidden;
+}
+
+#slider > div{
+  flex-grow: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+#slider > div:hover h5{
+  color: yellow;
+}
