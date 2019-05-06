@@ -17,7 +17,7 @@ const redirectStartPageToCrimes = () => {
 function App() {
   return (
     <div className="App">
-
+      {/* Sets up routing for our app */}
       <Router>
         <Switch>
           <Route path="/" exact component={redirectStartPageToCrimes}/>

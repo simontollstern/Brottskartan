@@ -3,8 +3,10 @@ import { NavLink } from "react-router-dom";
 import style from './NavbarComponent.module.css'
 import { withRouter } from 'react-router'
 
+// renders our navigation
 class NavbarComponent extends Component {
 
+  // object with info to show according to route
   infoTextObject = {
 
     crime: 'Här visas senaste dygnets brott',
@@ -12,6 +14,7 @@ class NavbarComponent extends Component {
     stats: 'Här visar vi statistik över brott i Sverige'
   }
 
+  // sets state for our infoText
   constructor(props) {
     super(props)
 
@@ -20,6 +23,7 @@ class NavbarComponent extends Component {
     }
   }
 
+  // when our component mounts we manipulate state depending on url
   componentDidMount() {
     switch (this.props.location.pathname) {
       case '/brott':
@@ -36,6 +40,7 @@ class NavbarComponent extends Component {
     }
   }
 
+  // sets state and sends our param to dashboard
   stateFunc = (param) => {
     this.setState({
       infoText: this.infoTextObject[param]

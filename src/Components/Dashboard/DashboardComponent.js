@@ -4,6 +4,7 @@ import SearchFuncComponent from '../Search/SearchFuncComponent'
 import style from './DashboardComponent.module.css'
 import DropdownComponent from '../Dropdown/DropdownComponent';
 
+//renders a dashboard interface 
 class DashboardComponent extends Component {
   constructor(props) {
     super(props)
@@ -13,10 +14,12 @@ class DashboardComponent extends Component {
     }
   }
 
+  // changes states
   toggleInfo = () => {
     this.setState({ toggleInfo: !this.state.toggleInfo })
   }
 
+  //shows a dropdown if type === crime
   updateType = (type) => {
     this.setState({
       showType: type

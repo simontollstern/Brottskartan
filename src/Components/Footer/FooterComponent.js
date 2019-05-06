@@ -1,6 +1,7 @@
 import React from 'react'
 
 import style from './footer.module.css';
+import './slider.css';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 
@@ -9,7 +10,7 @@ import { useEffect } from 'react';
 function FooterComponent(props) {
 
   useEffect(() => {
-    const slider = document.querySelector('.footer_slider__17LvF');
+    const slider = document.querySelector('#slider');
 
     let margin = 0;
     const interval = () => {
@@ -36,13 +37,14 @@ function FooterComponent(props) {
     }
   });
 
+
   return (
     <div className={style.boxStyle}>
       <h4 className={style.latest}>
         Senaste Nytt:
       </h4>
       <div className={style.news}>
-        <div className={style.slider}>
+        <div id="slider">
           {props.crimes.map((crime, i) => {
             return i < 10 && <div key={i}><h5>{crime.name}</h5></div>
           })}

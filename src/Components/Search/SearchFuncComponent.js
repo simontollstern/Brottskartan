@@ -3,12 +3,13 @@ import style from './SearchFuncComponent.module.css';
 import { connect } from 'react-redux';
 import { useEffect } from 'react'
 
+// returns a search function for our dashboard
 function SearchFuncComponent(props) {
 
+  // on submit we create a geocoder and sends it to our search function and prevent the page refreshing
   const preventAction = (e) => {
     e.preventDefault();
     let geocoder = new window.google.maps.Geocoder();
-
       if(props.stationMap) {
         geocodeAddress(geocoder, props.stationMap);
       } else if (props.crimeMap) {
@@ -25,9 +26,12 @@ function SearchFuncComponent(props) {
     // Get our input fields places and place it into a a new variable
     let places = searchBox.getPlaces();
 
-    // bound
+    // bound????????
     let bounds = new window.google.maps.LatLngBounds();
-    for(let place of places){
+    let i, place;
+    
+    // vad är detta för for loop???????
+    for(i = 0; place = places[i]; i++) {
       bounds.extend(place.geometry.location);
     }
 
@@ -46,6 +50,7 @@ function SearchFuncComponent(props) {
   })
   });
 
+  // receives a geocoder and our Map(station/crime) and lets users search on given map
   function geocodeAddress(geocoder, resultsMap) {
     let address = document.getElementById('input').value;
     geocoder.geocode({'address': address}, function(results, status) {
@@ -53,6 +58,7 @@ function SearchFuncComponent(props) {
         resultsMap.setCenter(results[0].geometry.location);
         resultsMap.setZoom(10);
       } else {
+        // popup error window if the search was faulty
         // alert('Geocode was not successful for the following reason: ' + status);
       }
     });
@@ -79,6 +85,7 @@ function SearchFuncComponent(props) {
     )
 }
 
+// grabs our maps from our redux state
 const mapStateToProps = (state) => ({
   stationMap: state.root.stationMap,
   crimeMap: state.root.crimeMap
