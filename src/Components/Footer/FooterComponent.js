@@ -1,41 +1,52 @@
 import React from 'react'
-
 import style from './footer.module.css';
 import './slider.css';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 
 // Show the latest crimes in the bottom of the page
-
 function FooterComponent(props) {
 
   useEffect(() => {
+    // Get the element with id 'slider'
     const slider = document.querySelector('#slider');
 
     let animation;
     let margin = 0;
-    const interval = () => {
+
+    // Function that moves the slider
+    const slide = () => {
+      // The amount of pixels to move the slider every frame
       margin -= 0.7;
+      // Reduce the marginLeft style of the first child in the slider
       slider.children[0].style.marginLeft = margin + 'px';
 
+      // If the first child is outside of the slider
       if(margin <= -slider.children[0].offsetWidth){
+        // Reset its marginLeft
         margin = 0;
         slider.children[0].style.marginLeft = '0px';
+        // Make it the last child in the slider
         slider.appendChild(slider.children[0]);
       }
 
-      animation = requestAnimationFrame(interval);
+      // Request the next animation frame
+      animation = requestAnimationFrame(slide);
     }
 
+    // If the slider element has children
     if(slider.children.length > 0){
-      animation = requestAnimationFrame(interval);
+      // Start the animation
+      animation = requestAnimationFrame(slide);
 
+      // Pause the animation on mouseenter
       slider.addEventListener('mouseenter', () => {
         cancelAnimationFrame(animation);
       });
 
+      // Resume it on mouseleave
       slider.addEventListener('mouseleave', () => {
-        animation = requestAnimationFrame(interval);
+        animation = requestAnimationFrame(slide);
       });
     }
   });
