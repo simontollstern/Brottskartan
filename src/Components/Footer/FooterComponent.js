@@ -12,27 +12,30 @@ function FooterComponent(props) {
   useEffect(() => {
     const slider = document.querySelector('#slider');
 
+    let animation;
     let margin = 0;
     const interval = () => {
-      margin--;
+      margin -= 0.7;
       slider.children[0].style.marginLeft = margin + 'px';
 
-      if(margin === -slider.children[0].offsetWidth){
+      if(margin <= -slider.children[0].offsetWidth){
         margin = 0;
         slider.children[0].style.marginLeft = '0px';
         slider.appendChild(slider.children[0]);
       }
+
+      animation = requestAnimationFrame(interval);
     }
 
     if(slider.children.length > 0){
-      let slide = setInterval(interval, 10);
+      animation = requestAnimationFrame(interval);
 
       slider.addEventListener('mouseenter', () => {
-        clearInterval(slide);
+        cancelAnimationFrame(animation);
       });
 
       slider.addEventListener('mouseleave', () => {
-        slide = setInterval(interval, 10);
+        animation = requestAnimationFrame(interval);
       });
     }
   });
