@@ -8,8 +8,8 @@ class GmapsCrimesComponent extends Component {
 
   // Defining variables (use this. to access them)
   map;
+  crimePositions = [];
   markers = [];
-  mapMarkers = [];
   infoText = "";
 
   componentDidMount () {
@@ -30,7 +30,7 @@ class GmapsCrimesComponent extends Component {
     this.renderMarkers(this.map, this.props.selectedType);
   }
 
-  //when update run function 
+  //when update run function
   componentDidUpdate() {
     this.renderMarkers(this.map, this.props.selectedType);
   }
@@ -38,21 +38,21 @@ class GmapsCrimesComponent extends Component {
   // Big function - feel free to split into smaller ones
   renderMarkers = (map, type) => {
     // Loop through all markers and remove them from the map
-    for(let marker of this.mapMarkers){
+    for(let marker of this.markers){
       marker.setMap(null);
     }
 
+    this.crimePositions = [];
     this.markers = [];
-    this.mapMarkers = [];
 
     // Loop through crimes aquired from the API..
     for(let crime of this.props.crimes){
-      // ..if there already exists a crime with the same lat/lng in the marker array..
-      if(!this.markers.some(
-        e => e.location.lat === crime.coords_lat && 
+      // ..if there already exists a crime with the same lat/lng in the position array..
+      if(!this.crimePositions.some(
+        e => e.location.lat === crime.coords_lat &&
           e.location.lng === crime.coords_lng)){
         // ..add a new object to the array..
-        this.markers.push({
+        this.crimePositions.push({
           location: {
             lat: crime.coords_lat,
             lng: crime.coords_lng
@@ -63,44 +63,44 @@ class GmapsCrimesComponent extends Component {
         });
       }else{
         // ..otherwise add the crime to the crime array of the object with the same lat/lng
-        for(let marker of this.markers){
-          if(marker.location.lat === crime.coords_lat && 
-            marker.location.lng === crime.coords_lng){
-            marker.crimes.push(crime);
+        for(let position of this.crimePositions){
+          if(position.location.lat === crime.coords_lat &&
+            position.location.lng === crime.coords_lng){
+            position.crimes.push(crime);
           }
         }
       }
     }
 
     // Loop through the newly created array of markers
-    for(let marker of this.markers){
+    for(let position of this.crimePositions){
       this.infoText = [];
       if (this.props.selectedType === 'Alla') {
         //loops through the markers of crimes and give them an infoTextbox
-        for(let crime of marker.crimes){
-          
-          this.infoText += 
+        for(let crime of position.crimes){
+
+          this.infoText +=
             `<div class="infoWindowCss">
                 <h3>${crime.name}</h3>
                 <br>
                 <h2>${crime.summary}</h2>
                 <br>
                 <p style="font-size: 16px;">
-                Läs mer om detta brott 
+                Läs mer om detta brott
                 <a style="text-decoration: none;" target="_blank" href="${crime.url}">
                   här
                 </a>
                 </p><br>
             </div>`;
         }
-        this.mapMarkers.push(new window.google.maps.Marker({
-          position: { 
-            lat: marker.location.lat, 
-            lng: marker.location.lng 
+        this.markers.push(new window.google.maps.Marker({
+          position: {
+            lat: position.location.lat,
+            lng: position.location.lng
           },
           map: map,
           label: {
-            text: marker.crimes.length.toString(),
+            text: position.crimes.length.toString(),
             color: 'white',
             fontWeight: 'bold'
           },
@@ -109,19 +109,19 @@ class GmapsCrimesComponent extends Component {
           }),
           opened: false
         }));
-      } else if (marker.crimes.some(e => e.type === this.props.selectedType)){
+      } else if (position.crimes.some(e => e.type === this.props.selectedType)){
 
-        let temp = marker.crimes.filter(crime => crime.type === this.props.selectedType)
+        let selectedCrimes = position.crimes.filter(crime => crime.type === this.props.selectedType)
 
-        for(let crime of temp) {
-          this.infoText += 
+        for(let crime of selectedCrimes) {
+          this.infoText +=
           `<div class="infoWindowCss">
               <h3>${crime.name}</h3>
               <br>
               <h2>${crime.summary}</h2><br>
               <p style="font-size: 16px;">
-                Läs mer om detta brott 
-                <a 
+                Läs mer om detta brott
+                <a
                 style="text-decoration: none;"
                 target="_blank" href="${crime.url}">
                 här
@@ -130,14 +130,14 @@ class GmapsCrimesComponent extends Component {
               <br>
           </div>`;
         }
-        this.mapMarkers.push(new window.google.maps.Marker({
-          position: { 
-            lat: marker.location.lat, 
-            lng: marker.location.lng 
+        this.markers.push(new window.google.maps.Marker({
+          position: {
+            lat: position.location.lat,
+            lng: position.location.lng
           },
           map: map,
           label: {
-            text: marker.crimes.filter(marker => 
+            text: position.crimes.filter(marker =>
               marker.type === this.props.selectedType
             ).length.toString(),
             color: 'white',
@@ -150,15 +150,15 @@ class GmapsCrimesComponent extends Component {
       }
     }
 
-    //loops through the all mapMarkers and adds click function to it, and some settings for google api
-    for(let marker of this.mapMarkers){
-      let markers = this.mapMarkers;
+    //loops through the all markers and adds click function to it, and some settings for google api
+    for(let marker of this.markers){
+      let markers = this.markers;
 
       marker.addListener('click', function(){
         map.panTo(marker.position);
         map.setZoom(8);
 
-        //checks if the marker is open and close it 
+        //checks if the marker is open and close it
         for(let m of markers){
           if(m !== marker){
             m.opened = false;
