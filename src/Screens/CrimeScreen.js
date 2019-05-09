@@ -29,12 +29,6 @@ class CrimeScreen extends Component {
     })
   }
 
-  // getAllData = () =>{
-  //   fetch('https://api.brottskarta.se/dagens')
-  //   .then(response => response.json())
-  //   .then(data => this.props.getCrimes(data))
-  // }
-
   componentDidMount() {
      this.getLatestData();
     //timer that call a function to get new data from the Polis-api
