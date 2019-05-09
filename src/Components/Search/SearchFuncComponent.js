@@ -29,7 +29,7 @@ function SearchFuncComponent(props) {
     // here we define a bound for our search
     let bounds = new window.google.maps.LatLngBounds();
     
-    // vad är detta för for loop???????
+    // take our place from our searchbox places
     for(let place of places) {
       bounds.extend(place.geometry.location)
     }
