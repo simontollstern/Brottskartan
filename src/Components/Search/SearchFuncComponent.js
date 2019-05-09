@@ -26,14 +26,17 @@ function SearchFuncComponent(props) {
     // Get our input fields places and place it into a a new variable
     let places = searchBox.getPlaces();
 
-    // bound????????
+    // here we define a bound for our search
     let bounds = new window.google.maps.LatLngBounds();
-    let i, place;
+    // let i, place;
     
     // vad är detta för for loop???????
-    for(i = 0; place = places[i]; i++) {
-      bounds.extend(place.geometry.location);
+    for(let place of places) {
+      bounds.extend(place.geometry.location)
     }
+    // for(i = 0; place = places[i]; i++) {
+    //   bounds.extend(place.geometry.location);
+    // }
 
     // If crime map is not undefined, go to the following
     if (props.crimeMap !== undefined) {
