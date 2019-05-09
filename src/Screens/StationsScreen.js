@@ -21,6 +21,7 @@ class StationsScreen extends Component {
         if(station.location.gps !== "0,0"){
           return station;
         }
+        return null;
       })
       this.props.getStations(filteredStations)
     })

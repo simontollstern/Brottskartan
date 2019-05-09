@@ -26,13 +26,12 @@ function SearchFuncComponent(props) {
     // Get our input fields places and place it into a a new variable
     let places = searchBox.getPlaces();
 
-    // bound????????
+    // here we define a bound for our search
     let bounds = new window.google.maps.LatLngBounds();
-    let i, place;
     
-    // vad är detta för for loop???????
-    for(i = 0; place = places[i]; i++) {
-      bounds.extend(place.geometry.location);
+    // take our place from our searchbox places
+    for(let place of places) {
+      bounds.extend(place.geometry.location)
     }
 
     // If crime map is not undefined, go to the following
@@ -57,9 +56,6 @@ function SearchFuncComponent(props) {
       if (status === 'OK') {
         resultsMap.setCenter(results[0].geometry.location);
         resultsMap.setZoom(10);
-      } else {
-        // popup error window if the search was faulty
-        // alert('Geocode was not successful for the following reason: ' + status);
       }
     });
   }
